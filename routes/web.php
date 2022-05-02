@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Resource;
 use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\TelefoneController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  
  Route::resource('/telefone',TelefoneController::class);
  
- Route::resource('/aluno',TelefoneController::class);
+ Route::resource('/aluno', AlunoController::class);
