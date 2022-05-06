@@ -15,26 +15,26 @@ return new class extends Migration
     {
         Schema::create('aluno', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_aluno',45);
+            $table->string('nome_aluno',64);
             $table->date('data_nascimento');
             $table->string('rg_aluno',15)->unique();;
             $table->string('cpf_aluno',15)->nullable();
-            $table->string('nome_pai',45)->nullable();
-            $table->string('nome_mae',45);
+            $table->string('nome_pai',64)->nullable();
+            $table->string('nome_mae',64);
             $table->string('email')->unique();
             $table->string('sexo',1);
             $table->string('tipo_sanguinio',12);
-            $table->string('estado_civil',12);
+            $table->string('estado_civil',32);
             $table->string('manequim',12)->nullable();
-            $table->string('numero_calcado',12)->nullable();
-            $table->string('portador_pne',3);
-            $table->string('qual_pne',100)->nullable();
-            $table->string('medicacao_controlada',3);
-            $table->string('qual_medicacao',45)->nullable();
-            $table->string('possui_bolsa_familia',3);
+            $table->string('numero_calcado',3)->nullable();
+            $table->boolean('portador_pne');
+            $table->string('descricao_pne',128)->nullable();
+            $table->boolean('medicacao_controlada');
+            $table->string('nome_medicacao',160)->nullable();
+            $table->boolean('possui_bolsa_familia');
             $table->string('numero_bolsa_familia',15)->nullable();
             $table->string('numero_cnis',15)->nullable();
-            $table->string('renda_familiar',15);
+            $table->string('renda_familiar',10);
             $table->string('obs',200)->nullable();
             $table->string('nome_social',15)->nullable();
             $table->string('turno_escolar',15)->nullable();

@@ -148,7 +148,7 @@
             <div class="card-column col-12">
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="pne" label="*O aluno possuí aluguma necessidade especial?">
+                    <x-adminlte-select name="pne" label="*O aluno possuí alguma necessidade especial?">
                         <x-adminlte-options :options="['SIM' => 'SIM', 'NÃO' =>'NÃO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
@@ -158,14 +158,20 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-input type="number" name="renda_familiar" label="*Renda familiar:" placeholder="Informe a renda familiar do aluno a ser cadastrado." required="required" enable-feedback />
+                    <x-adminlte-select name="medicacao_controlada" label="*O aluno toma alguma medicação controlada?">
+                        <x-adminlte-options :options="['SIM' => 'SIM', 'NÃO' =>'NÃO']" disabled="0" empty-option="Selecione uma opção..." />
+                    </x-adminlte-select>
                 </div>
+
+                <div class="form-group col-12 hidden-ativo">
+                    <textarea class="description" name="nome_medicacao" id="nome_medicacao" placeholder="Qual medicação?"></textarea>
+                </div>
+
                 <div class="form-group col-12">
-                    <x-adminlte-input type="number" name="numero_cnis" label="*Número do cnis:" placeholder="Informe o número do cnis." required="required" enable-feedback />
+                    <x-adminlte-select name="tipo_sanguineo" label="*Qual o tipo sanguineo do aluno:">
+                        <x-adminlte-options :options="['O+' => 'O+', 'O' =>'O-', 'A+' =>'A+', 'A' =>'A-', 'B+' =>'B+', 'B' =>'B-', 'AB' =>'AB']" disabled="0" empty-option="Selecione uma opção..." />
+                    </x-adminlte-select>
                 </div>
-
-
-
 
             </div>
 
