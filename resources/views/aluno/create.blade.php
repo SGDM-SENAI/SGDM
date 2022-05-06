@@ -38,7 +38,7 @@
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
-                
+
             </ul>
         </div>
         @endif
@@ -59,7 +59,7 @@
                     <x-adminlte-input name="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." required="required" enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado."  enable-feedback />
+                    <x-adminlte-input type="number" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" required="required" enable-feedback />
@@ -100,7 +100,7 @@
         <!-- Dados gerais -->
 
         <!-- Dados responsaveis -->
-        <div class=" card-body" id="form-2">
+        <div class="hidden-ativo card-body" id="form-2">
 
             <div class="card-column col-7">
 
@@ -117,14 +117,14 @@
                     <x-adminlte-input type="number" name="numero_cnis" label="*Número do cnis:" placeholder="Informe o número do cnis." required="required" enable-feedback />
                 </div>
 
-                
+
 
 
             </div>
 
             <div class="column col-5">
 
-            <div class="form-group col-12">
+                <div class="form-group col-12">
                     <x-adminlte-select name="bolsa_familia" label="*Bolsa família:">
                         <x-adminlte-options :options="['POSSUI' => 'ALUNO POSSUI BOLSA FAMÍLIA', 'NÃO POSSUI' =>'ALUNO NÃO POSSUI BOLSA FAMÍLIA']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
@@ -138,8 +138,6 @@
                 <div class="form-group col-11">
                     <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
                 </div>
-
-        
 
             </div>
 
@@ -147,28 +145,32 @@
 
         <div class=" card-body" id="form-3">
 
-            <div class="card-column col-7">
+            <div class="card-column col-12">
 
-                <div class="form-group col-11">
-                    <x-adminlte-input name="nome_pai" label="Nome do pai aluno:" placeholder="Informe o nome do pai do aluno a ser cadastrado." enable-feedback />
+                <div class="form-group col-12">
+                    <x-adminlte-select name="pne" label="*O aluno possuí aluguma necessidade especial?">
+                        <x-adminlte-options :options="['SIM' => 'SIM', 'NÃO' =>'NÃO']" disabled="0" empty-option="Selecione uma opção..." />
+                    </x-adminlte-select>
                 </div>
-                <div class="form-group col-11">
-                    <x-adminlte-input name="nome_mae" label="*Nome da mãe do aluno:" placeholder="Informe o nome da mãe do aluno a ser cadastrado." enable-feedback />
+
+                <div class="form-group col-12 hidden-ativo">
+                    <textarea class="description" name="descricao_pne" id="descricao_pne" placeholder="Quais necessidades?"></textarea>
                 </div>
-                <div class="form-group col-11">
+
+                <div class="form-group col-12">
                     <x-adminlte-input type="number" name="renda_familiar" label="*Renda familiar:" placeholder="Informe a renda familiar do aluno a ser cadastrado." required="required" enable-feedback />
                 </div>
-                <div class="form-group col-11">
+                <div class="form-group col-12">
                     <x-adminlte-input type="number" name="numero_cnis" label="*Número do cnis:" placeholder="Informe o número do cnis." required="required" enable-feedback />
                 </div>
 
-                
+
 
 
             </div>
 
             <div class="column col-5">
-
+                <!-- 
             <div class="form-group col-12">
                     <x-adminlte-select name="bolsa_familia" label="*Bolsa família:">
                         <x-adminlte-options :options="['POSSUI' => 'ALUNO POSSUI BOLSA FAMÍLIA', 'NÃO POSSUI' =>'ALUNO NÃO POSSUI BOLSA FAMÍLIA']" disabled="0" empty-option="Selecione uma opção..." />
@@ -182,9 +184,9 @@
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
-                </div>
+                </div> -->
 
-        
+
 
             </div>
 
@@ -216,7 +218,7 @@
 </form>
 
 <script>
-    
+
 </script>
 
 <style>
@@ -242,11 +244,6 @@
         display: flex;
     }
 
-    #description-aluno {
-        border-radius: 0.25rem;
-        padding: 1vw;
-        margin-top: 2vh;
-    }
 
     .column {
         margin-bottom: 4vh;
@@ -261,6 +258,9 @@
     .description {
         width: 99%;
         height: 95%;
+        border-radius: 0.25rem;
+        padding: 1vw;
+        margin-top: 2vh;
     }
 
     .container-date {
@@ -299,21 +299,20 @@
         margin-left: 0.2vw;
     }
 
-    .figure-circle{
-    width: 20px;
-    height: 20px;
-    border: rgb(0, 0, 0) solid 2px;
-    border-radius: 10px;
-    margin-right: 1vw;
+    .figure-circle {
+        width: 20px;
+        height: 20px;
+        border: rgb(0, 0, 0) solid 2px;
+        border-radius: 10px;
+        margin-right: 1vw;
 
-}
+    }
 
-.circle-ativo{
-    background-color: rgb(8, 103, 57);
-}
+    .circle-ativo {
+        background-color: rgb(8, 103, 57);
+    }
 
-.figure-etapa{
-}
+
 </style>
 
 @stop
