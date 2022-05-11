@@ -10,7 +10,15 @@
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 <!-- form start -->
+
+<!-- Cada formulario possui o seu card, e sua visualização é trocada por uma função javascript -->
+
+<!-- form1  -->
+
 <form action="#" id="form-1">
+
+    <!-- Os formulários não possuem method, pois são tratados via ajax -->
+    
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
         <div class="card-header backgroud-primary">
@@ -121,6 +129,10 @@
     </div>
 </form>
 
+<!-- /form1  -->
+
+<!--  form2 -->
+
 <form class="hidden-ativo" action="#" id="form-2">
     @csrf
     <div class=" card card-admin card-outline direct-chat direct-chat-primary shadow-none">
@@ -201,6 +213,11 @@
 
     </div>
 </form>
+
+<!--  /form2 -->
+
+<!--  form3 -->
+
 <form class="hidden-ativo" action="#" id="form-3">
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
@@ -280,6 +297,9 @@
 
     </div>
 </form>
+
+<!-- /form3  -->
+
 <!-- /.card-body -->
 
 <script src="http://localhost:8000/vendor/jquery/jquery.min.js"></script>
@@ -287,6 +307,7 @@
 <script src="http://localhost:8000/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
 <script>
+
     function replaceElementOption(id, sender) {
         element = document.getElementById(id);
         if (document.getElementById(sender).value == "SIM") {
@@ -296,17 +317,20 @@
         };
 
     }
-
+    
+    // Função para deixar um item com display none
     const inactivate = (element)=>{
         element.classList.remove("hidden-inativo");
         element.classList.add("hidden-ativo");
     }
 
+    // Função para remover o display none
     const activate = (element)=>{
         element.classList.remove("hidden-ativo");
         element.classList.add("hidden-inativo");
     }
 
+    // Função para inverter visibilidade
     const replace = (local,destiny)=>{
         inactivate(document.getElementById(local));
         activate(document.getElementById(destiny));
