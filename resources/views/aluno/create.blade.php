@@ -45,7 +45,7 @@
         <!-- /.card-header -->
 
         <!-- Dados gerais -->
-        <div class="card-body hidden-ativo" id="form-1">
+        <div class="card-body" id="form-1">
 
             <div class="card-column col-7">
 
@@ -143,56 +143,45 @@
 
         </div>
 
-        <div class=" card-body" id="form-3">
+        <div class="hidden-ativo card-body" id="form-3">
 
             <div class="card-column col-12">
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="pne" label="*O aluno possuí alguma necessidade especial?">
+                    <x-adminlte-select onchange="replaceElementOption('hidden-description-pne','pne')" id="pne" name="pne" label="*O aluno possuí alguma necessidade especial?">
                         <x-adminlte-options :options="['SIM' => 'SIM', 'NÃO' =>'NÃO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
 
-                <div class="form-group col-12 hidden-ativo">
+                <div class="form-group col-12 hidden-ativo" id="hidden-description-pne">
                     <textarea class="description" name="descricao_pne" id="descricao_pne" placeholder="Quais necessidades?"></textarea>
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="medicacao_controlada" label="*O aluno toma alguma medicação controlada?">
+                    <x-adminlte-select onchange="replaceElementOption('container-nome-medicacao','medicacao_controlada')" name="medicacao_controlada" id="medicacao_controlada" label="*O aluno toma alguma medicação controlada?">
                         <x-adminlte-options :options="['SIM' => 'SIM', 'NÃO' =>'NÃO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
 
-                <div class="form-group col-12 hidden-ativo">
+                <div class="form-group col-12 hidden-ativo" id="container-nome-medicacao">
                     <textarea class="description" name="nome_medicacao" id="nome_medicacao" placeholder="Qual medicação?"></textarea>
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="tipo_sanguineo" label="*Qual o tipo sanguineo do aluno:">
+                    <x-adminlte-select name="tipo_sanguineo" label="*Qual o tipo sanguineo do aluno?">
                         <x-adminlte-options :options="['O+' => 'O+', 'O' =>'O-', 'A+' =>'A+', 'A' =>'A-', 'B+' =>'B+', 'B' =>'B-', 'AB' =>'AB']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-
-            </div>
-
-            <div class="column col-5">
-                <!-- 
-            <div class="form-group col-12">
-                    <x-adminlte-select name="bolsa_familia" label="*Bolsa família:">
-                        <x-adminlte-options :options="['POSSUI' => 'ALUNO POSSUI BOLSA FAMÍLIA', 'NÃO POSSUI' =>'ALUNO NÃO POSSUI BOLSA FAMÍLIA']" disabled="0" empty-option="Selecione uma opção..." />
+                
+                <div class="form-group col-12">
+                    <x-adminlte-select name="manequim" label="Qual é o manequim do aluno?">
+                        <x-adminlte-options :options="['P' => 'P', 'M' =>'M', 'G' =>'G', 'GG' =>'GG']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-                <div class="form-group col-12" id="numero_bolsa_familia">
-                    <x-adminlte-input type="number" name="numero_bolsa_familia" label="Número do bolsa família:" placeholder="Informe o número do bolsa família." enable-feedback />
-                </div>
-                <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone" label="*Telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
-                </div>
-                <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
-                </div> -->
 
-
+                <div class="form-group col-12" id="numero_calcado">
+                    <x-adminlte-input type="number" name="numero_calcado" label="Número do calçado do aluno:" placeholder="Informe o número do calçado do aluno." enable-feedback />
+                </div>
 
             </div>
 
@@ -209,14 +198,14 @@
             <span>Etapa <div id="num-etapa">1</div>/5</span>
         </div> -->
         <div class="figure-etapa">
-            <div class="figure-circle circle-ativo"></div>
-            <div class="figure-circle circle-inativo"></div>
-            <div class="figure-circle circle-inativo"></div>
-            <div class="figure-circle circle-inativo"></div>
-            <div class="figure-circle circle-inativo"></div>
+            <div id="circle-1" class="figure-circle circle-ativo"></div>
+            <div id="circle-2" class="figure-circle circle-inativo"></div>
+            <div id="circle-3" class="figure-circle circle-inativo"></div>
+            <div id="circle-4" class="figure-circle circle-inativo"></div>
+            <div id="circle-5" class="figure-circle circle-inativo"></div>
         </div>
         <div class="container-button-admin">
-            <button type="button" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button  type="button" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
             <button type="submit" class=" btn hidden-ativo  backgroud-primary">@lang('Finalizar cadastro')</button>
         </div>
 
@@ -225,7 +214,17 @@
 
 <script>
 
-</script>
+ function replaceElementOption(id,sender){
+    element = document.getElementById(id);
+    if(document.getElementById(sender).value == "SIM"){
+        element.classList.remove("hidden-ativo");
+    }else{
+        element.classList.add("hidden-ativo");
+    };
+    
+ }
+
+ </script>
 
 <style>
     .card-admin {
