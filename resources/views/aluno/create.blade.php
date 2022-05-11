@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 <!-- form start -->
-<form action="{{ route('aluno.store') }}" method="POST">
+<form action="#" id="form-1">
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
         <div class="card-header backgroud-primary">
@@ -23,7 +23,7 @@
                 </a>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <p></p>
         </div>
         @if (session('success'))
@@ -41,28 +41,28 @@
 
             </ul>
         </div>
-        @endif
+        @endif -->
         <!-- /.card-header -->
 
         <!-- Dados gerais -->
-        <div class="card-body" id="form-1">
+        <div class="card-body">
 
             <div class="card-column col-7">
 
                 <div class="form-group col-11">
-                    <x-adminlte-input name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." required="required" enable-feedback />
+                    <x-adminlte-input name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input name="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." required="required" enable-feedback />
+                    <x-adminlte-input name="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input type="number" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" required="required" enable-feedback />
+                    <x-adminlte-input name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
 
 
@@ -97,10 +97,46 @@
             </div>
 
         </div>
-        <!-- Dados gerais -->
+    </div>
+    <div class="container-options">
 
+        <div class="container-button-admin">
+            <button type="button" disabled class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+        </div>
+        <!-- <div class="container-etapa">
+            <span>Etapa <div id="num-etapa">1</div>/5</span>
+        </div> -->
+        <div class="figure-etapa">
+            <div id="circle-1" class="figure-circle circle-ativo"></div>
+            <div id="circle-2" class="figure-circle circle-inativo"></div>
+            <div id="circle-3" class="figure-circle circle-inativo"></div>
+            <div id="circle-4" class="figure-circle circle-inativo"></div>
+            <div id="circle-5" class="figure-circle circle-inativo"></div>
+        </div>
+        <div class="container-button-admin">
+            <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button type="submit" class=" btn hidden-ativo  backgroud-primary">@lang('Finalizar cadastro')</button>
+        </div>
+
+    </div>
+</form>
+
+<form class="hidden-ativo" action="#" id="form-2">
+    @csrf
+    <div class=" card card-admin card-outline direct-chat direct-chat-primary shadow-none">
+        <!-- Dados gerais -->
+        <div class="card-header backgroud-primary">
+            <div class="d-flex justify-content-between w-100">
+                <h3 class="card-title">
+                    <span>@lang('Formulário de cadastro do aluno')</span>
+                </h3>
+                <a href="{{ route('aluno.index') }}" class="btn-danger btn-sm">
+                    <i class="fa fa-arrow-left"></i> @lang('Sair')
+                </a>
+            </div>
+        </div>
         <!-- Dados responsaveis -->
-        <div class="hidden-ativo card-body" id="form-2">
+        <div class="card-body">
 
             <div class="card-column col-7">
 
@@ -111,10 +147,10 @@
                     <x-adminlte-input name="nome_mae" label="*Nome da mãe do aluno:" placeholder="Informe o nome da mãe do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="renda_familiar" label="*Renda familiar:" placeholder="Informe a renda familiar do aluno a ser cadastrado." required="required" enable-feedback />
+                    <x-adminlte-input type="number" name="renda_familiar" label="*Renda familiar:" placeholder="Informe a renda familiar do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="numero_cnis" label="*Número do cnis:" placeholder="Informe o número do cnis." required="required" enable-feedback />
+                    <x-adminlte-input type="number" name="numero_cnis" label="*Número do cnis:" placeholder="Informe o número do cnis." enable-feedback />
                 </div>
 
 
@@ -133,17 +169,52 @@
                     <x-adminlte-input type="number" name="numero_bolsa_familia" label="Número do bolsa família:" placeholder="Informe o número do bolsa família." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone" label="*Telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
+                    <x-adminlte-input type="number" name="telefone" label="*Telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." required="required" enable-feedback />
+                    <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
                 </div>
 
             </div>
 
         </div>
+    </div>
+    <div class="container-options">
 
-        <div class="hidden-ativo card-body" id="form-3">
+        <div class="container-button-admin">
+            <button type="button" onclick="replace('form-2','form-1')" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+        </div>
+        <!-- <div class="container-etapa">
+            <span>Etapa <div id="num-etapa">1</div>/5</span>
+        </div> -->
+        <div class="figure-etapa">
+            <div id="circle-1" class="figure-circle circle-inativo"></div>
+            <div id="circle-2" class="figure-circle circle-ativo"></div>
+            <div id="circle-3" class="figure-circle circle-inativo"></div>
+            <div id="circle-4" class="figure-circle circle-inativo"></div>
+            <div id="circle-5" class="figure-circle circle-inativo"></div>
+        </div>
+        <div class="container-button-admin">
+            <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button type="submit" class=" btn hidden-ativo  backgroud-primary">@lang('Finalizar cadastro')</button>
+        </div>
+
+    </div>
+</form>
+<form class="hidden-ativo" action="#" id="form-3">
+    @csrf
+    <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
+    <div class="card-header backgroud-primary">
+            <div class="d-flex justify-content-between w-100">
+                <h3 class="card-title">
+                    <span>@lang('Formulário de cadastro do aluno')</span>
+                </h3>
+                <a href="{{ route('aluno.index') }}" class="btn-danger btn-sm">
+                    <i class="fa fa-arrow-left"></i> @lang('Sair')
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
 
             <div class="card-column col-12">
 
@@ -172,7 +243,7 @@
                         <x-adminlte-options :options="['O+' => 'O+', 'O' =>'O-', 'A+' =>'A+', 'A' =>'A-', 'B+' =>'B+', 'B' =>'B-', 'AB' =>'AB']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-                
+
                 <div class="form-group col-12">
                     <x-adminlte-select name="manequim" label="Qual é o manequim do aluno?">
                         <x-adminlte-options :options="['P' => 'P', 'M' =>'M', 'G' =>'G', 'GG' =>'GG']" disabled="0" empty-option="Selecione uma opção..." />
@@ -186,8 +257,6 @@
             </div>
 
         </div>
-        <!-- /.card-body -->
-
     </div>
     <div class="container-options">
 
@@ -198,33 +267,62 @@
             <span>Etapa <div id="num-etapa">1</div>/5</span>
         </div> -->
         <div class="figure-etapa">
-            <div id="circle-1" class="figure-circle circle-ativo"></div>
+            <div id="circle-1" class="figure-circle circle-inativo"></div>
             <div id="circle-2" class="figure-circle circle-inativo"></div>
-            <div id="circle-3" class="figure-circle circle-inativo"></div>
+            <div id="circle-3" class="figure-circle circle-ativo"></div>
             <div id="circle-4" class="figure-circle circle-inativo"></div>
             <div id="circle-5" class="figure-circle circle-inativo"></div>
         </div>
         <div class="container-button-admin">
-            <button  type="button" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
             <button type="submit" class=" btn hidden-ativo  backgroud-primary">@lang('Finalizar cadastro')</button>
         </div>
 
     </div>
 </form>
+<!-- /.card-body -->
+
+<script src="http://localhost:8000/vendor/jquery/jquery.min.js"></script>
+<script src="http://localhost:8000/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost:8000/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
 <script>
+    function replaceElementOption(id, sender) {
+        element = document.getElementById(id);
+        if (document.getElementById(sender).value == "SIM") {
+            element.classList.remove("hidden-ativo");
+        } else {
+            element.classList.add("hidden-ativo");
+        };
 
- function replaceElementOption(id,sender){
-    element = document.getElementById(id);
-    if(document.getElementById(sender).value == "SIM"){
-        element.classList.remove("hidden-ativo");
-    }else{
+    }
+
+    const inactivate = (element)=>{
+        element.classList.remove("hidden-inativo");
         element.classList.add("hidden-ativo");
-    };
-    
- }
+    }
 
- </script>
+    const activate = (element)=>{
+        element.classList.remove("hidden-ativo");
+        element.classList.add("hidden-inativo");
+    }
+
+    const replace = (local,destiny)=>{
+        inactivate(document.getElementById(local));
+        activate(document.getElementById(destiny));
+    }
+
+    $(document).ready(() => {
+
+        $("#form-1").submit((e) => {
+            e.preventDefault();
+            replace("form-1","form-2")
+
+        })
+
+
+    })
+</script>
 
 <style>
     .card-admin {
@@ -247,6 +345,7 @@
     .card-body {
         padding: 0 1vw !important;
         display: flex;
+        margin-top: 2vh;
     }
 
 
@@ -316,13 +415,6 @@
     .circle-ativo {
         background-color: rgb(8, 103, 57);
     }
-
-
 </style>
-
-@stop
-
-
-@section('js')
 
 @stop
