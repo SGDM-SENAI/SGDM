@@ -13,12 +13,12 @@
 
 <!-- Cada formulario possui o seu card, e sua visualização é trocada por uma função javascript -->
 
-<!-- form1  -->
+<!-- form-dados-gerais  -->
 
-<form action="#" id="form-1">
+<form action="#" id="form-dados-gerais">
 
     <!-- Os formulários não possuem method, pois são tratados via ajax -->
-    
+
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
         <div class="card-header backgroud-primary">
@@ -52,7 +52,7 @@
         @endif -->
         <!-- /.card-header -->
 
-        <!-- Dados gerais -->
+
         <div class="card-body">
 
             <div class="card-column col-7">
@@ -70,7 +70,7 @@
                     <x-adminlte-input type="number" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
+                    <x-adminlte-input type="email" name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
 
 
@@ -115,11 +115,11 @@
             <span>Etapa <div id="num-etapa">1</div>/5</span>
         </div> -->
         <div class="figure-etapa">
-            <div id="circle-1" class="figure-circle circle-ativo"></div>
-            <div id="circle-2" class="figure-circle circle-inativo"></div>
-            <div id="circle-3" class="figure-circle circle-inativo"></div>
-            <div id="circle-4" class="figure-circle circle-inativo"></div>
-            <div id="circle-5" class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-ativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
         </div>
         <div class="container-button-admin">
             <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
@@ -129,14 +129,14 @@
     </div>
 </form>
 
-<!-- /form1  -->
+<!-- /form-dados-gerais  -->
 
-<!--  form2 -->
+<!--  form-dados-responsaveis -->
 
-<form class="hidden-ativo" action="#" id="form-2">
+<form class="hidden-ativo" action="#" id="form-dados-responsaveis">
     @csrf
     <div class=" card card-admin card-outline direct-chat direct-chat-primary shadow-none">
-        <!-- Dados gerais -->
+
         <div class="card-header backgroud-primary">
             <div class="d-flex justify-content-between w-100">
                 <h3 class="card-title">
@@ -194,17 +194,22 @@
     <div class="container-options">
 
         <div class="container-button-admin">
-            <button type="button" onclick="replace('form-2','form-1')" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+
+            <button type="button" onclick="replace('form-dados-responsaveis','form-dados-gerais')" class="btn btn-back backgroud-empty">
+                @lang('< Voltar') </button>
+
         </div>
+
+
         <!-- <div class="container-etapa">
             <span>Etapa <div id="num-etapa">1</div>/5</span>
         </div> -->
         <div class="figure-etapa">
-            <div id="circle-1" class="figure-circle circle-inativo"></div>
-            <div id="circle-2" class="figure-circle circle-ativo"></div>
-            <div id="circle-3" class="figure-circle circle-inativo"></div>
-            <div id="circle-4" class="figure-circle circle-inativo"></div>
-            <div id="circle-5" class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-ativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
         </div>
         <div class="container-button-admin">
             <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
@@ -214,14 +219,14 @@
     </div>
 </form>
 
-<!--  /form2 -->
+<!--  /form-dados-responsaveis -->
 
-<!--  form3 -->
+<!--  form-dados-especificacoes -->
 
-<form class="hidden-ativo" action="#" id="form-3">
+<form class="hidden-ativo" action="#" id="form-dados-especificacoes">
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
-    <div class="card-header backgroud-primary">
+        <div class="card-header backgroud-primary">
             <div class="d-flex justify-content-between w-100">
                 <h3 class="card-title">
                     <span>@lang('Formulário de cadastro do aluno')</span>
@@ -278,17 +283,91 @@
     <div class="container-options">
 
         <div class="container-button-admin">
-            <button type="button" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+            <button type="button" onclick="replace('form-dados-especificacoes','form-dados-responsaveis')" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
         </div>
-        <!-- <div class="container-etapa">
-            <span>Etapa <div id="num-etapa">1</div>/5</span>
-        </div> -->
+
         <div class="figure-etapa">
-            <div id="circle-1" class="figure-circle circle-inativo"></div>
-            <div id="circle-2" class="figure-circle circle-inativo"></div>
-            <div id="circle-3" class="figure-circle circle-ativo"></div>
-            <div id="circle-4" class="figure-circle circle-inativo"></div>
-            <div id="circle-5" class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-ativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+        </div>
+
+        <div class="container-button-admin">
+            <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button type="submit" class=" btn hidden-ativo  backgroud-primary">@lang('Finalizar cadastro')</button>
+        </div>
+
+    </div>
+</form>
+
+<!-- /form-dados-especificacoes  -->
+
+<!-- form-dados-endereco  -->
+
+<form action="#" class="hidden-ativo" id="form-dados-endereco">
+
+    <!-- Os formulários não possuem method, pois são tratados via ajax -->
+
+    @csrf
+    <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
+        <div class="card-header backgroud-primary">
+            <div class="d-flex justify-content-between w-100">
+                <h3 class="card-title">
+                    <span>@lang('Formulário de cadastro do aluno')</span>
+                </h3>
+                <a href="{{ route('aluno.index') }}" class="btn-danger btn-sm">
+                    <i class="fa fa-arrow-left"></i> @lang('Sair')
+                </a>
+            </div>
+        </div>
+
+        <!-- /.card-header -->
+
+
+        <div class="card-body">
+
+            <div class="card-column col-12">
+
+                <div class="form-group col-12">
+                    <x-adminlte-input onchange="viacepComplete()" type="number" name="cep" id="cep" label="*Cep:" placeholder="Ex: 42800256" enable-feedback />
+                </div>
+
+                <div class="form-group col-12">
+                    <x-adminlte-input id="localidade" name="localidade" label="*Localidade:" placeholder="Informe a localidade onde o aluno reside." enable-feedback />
+                </div>
+                <div class="form-group col-12">
+                    <x-adminlte-input id="bairro" name="bairro" label="*Bairro:" placeholder="Informe o bairro onde o aluno reside." enable-feedback />
+                </div>
+                <div class="form-group col-12">
+                    <x-adminlte-input id="logradouro" name="logradouro" label="*Logradouro:" placeholder="Informe o logradouro onde o aluno reside." enable-feedback />
+                </div>
+
+                <div class="form-group col-12">
+                    <x-adminlte-input id="numero_casa" name="numero_casa" label="*Numero da casa:" placeholder="informe o numero da casa onde o aluno reside." enable-feedback />
+                </div>
+
+                <div class="form-group col-12">
+                    <x-adminlte-input id="complemento" name="complemento" label="Complemento:" placeholder="Digite um complemento." enable-feedback />
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container-options">
+
+        <div class="container-button-admin">
+            <button type="button" disabled class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+        </div>
+        <div class="figure-etapa">
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-inativo"></div>
+            <div class="figure-circle circle-ativo"></div>
+            <div class="figure-circle circle-inativo"></div>
         </div>
         <div class="container-button-admin">
             <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
@@ -298,7 +377,7 @@
     </div>
 </form>
 
-<!-- /form3  -->
+<!-- /form-dados-endereco  -->
 
 <!-- /.card-body -->
 
@@ -307,7 +386,6 @@
 <script src="http://localhost:8000/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
 <script>
-
     function replaceElementOption(id, sender) {
         element = document.getElementById(id);
         if (document.getElementById(sender).value == "SIM") {
@@ -317,31 +395,62 @@
         };
 
     }
-    
+
     // Função para deixar um item com display none
-    const inactivate = (element)=>{
+    const inactivate = (element) => {
         element.classList.remove("hidden-inativo");
         element.classList.add("hidden-ativo");
     }
 
     // Função para remover o display none
-    const activate = (element)=>{
+    const activate = (element) => {
         element.classList.remove("hidden-ativo");
         element.classList.add("hidden-inativo");
     }
 
     // Função para inverter visibilidade
-    const replace = (local,destiny)=>{
+    const replace = (local, destiny) => {
         inactivate(document.getElementById(local));
         activate(document.getElementById(destiny));
     }
 
+    async function viacepComplete() {
+        if(document.querySelector("#input-invalid") !== 'null'){
+            document.getElementById("cep").classList.remove("input-invalid");
+        }
+        
+        try {
+            var cep = parseInt(document.getElementById("cep").value);
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+            const dados = await fetch(url);
+            const endereco = await dados.json();
+            console.log(endereco)
+            if(typeof endereco.erro == "undefined"){
+                document.getElementById("localidade").value = endereco.localidade;
+                document.getElementById("bairro").value = endereco.bairro;
+                document.getElementById("logradouro").value = endereco.logradouro;
+            }
+        } catch (error) {
+            document.getElementById("cep").classList.add("input-invalid");
+        }
+    }
+
     $(document).ready(() => {
 
-        $("#form-1").submit((e) => {
+        $("#form-dados-gerais").submit((e) => {
             e.preventDefault();
-            replace("form-1","form-2")
+            replace("form-dados-gerais", "form-dados-responsaveis");
 
+        })
+
+        $("#form-dados-responsaveis").submit((e) => {
+            e.preventDefault();
+            replace("form-dados-responsaveis", "form-dados-especificacoes");
+        })
+
+        $("#form-dados-especificacoes").submit((e) => {
+            e.preventDefault();
+            replace("form-dados-especificacoes", "form-dados-endereco");
         })
 
 
@@ -409,6 +518,8 @@
         width: 100%;
     }
 
+    
+
     .container-etapa {
         align-items: center;
         text-align: center;
@@ -438,6 +549,11 @@
 
     .circle-ativo {
         background-color: rgb(8, 103, 57);
+    }
+
+    .input-invalid{
+        border-color: red;
+        color: red;
     }
 </style>
 

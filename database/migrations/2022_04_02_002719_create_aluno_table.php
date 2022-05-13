@@ -38,12 +38,10 @@ return new class extends Migration
             $table->string('obs',200)->nullable();
             $table->string('nome_social',15)->nullable();
             $table->string('turno_escolar',15)->nullable();
-            $table->string('numero_residencia',10);
-            $table->string('complemento',200)->nullable();
             
 
-            $table->unsignedBigInteger('viacep_id');
-            $table->foreign('viacep_id')->references('id')->on('viacep');
+            $table->unsignedBigInteger('endereco_id');
+            $table->foreign('endereco_id')->references('id')->on('endereco');
             $table->unsignedBigInteger('escola_id')->nullable();
             $table->foreign('escola_id')->references('id')->on('escola')->nullable();
             $table->unsignedBigInteger('escolaridade_id');

@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('viacep', function (Blueprint $table) {
+        Schema::create('endereco', function (Blueprint $table) {
             $table->id();
-            $table->string('cep',15);
+            $table->string('cep',15)->unique();
             $table->string('logradouro',45);
             $table->string('bairro',45);
             $table->string('Localidade',45);
+            $table->string('numero_casa',7);
+            $table->string('complemento',200)->nullable();
+            $table->string('numero_residencia',10);
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('viacep');
+        Schema::dropIfExists('endereco');
     }
 };

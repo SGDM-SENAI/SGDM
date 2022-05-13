@@ -24,8 +24,8 @@ return new class extends Migration
         });
         Schema::table('localidade', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('viacep_id')->nullable();
-            $table->foreign('viacep_id')->references('id')->on('viacep');
+            $table->unsignedBigInteger('endereco_id')->nullable();
+            $table->foreign('endereco_id')->references('id')->on('endereco');
 
         });
     }
