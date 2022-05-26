@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('alergia', function (Blueprint $table) {
             $table->id();
-            $table->string('Tipo alergia',45);
-            $table->string('Nome alergia',45);
+            $table->string('tipo_alergia',64);
+            $table->string('nome_alergia',128);
             $table->timestamps();
         });
     }

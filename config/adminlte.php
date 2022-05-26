@@ -250,13 +250,13 @@ return [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 5,
+            'label'       => 4,
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Principal',
+            'url'  => '/',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -264,60 +264,86 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'Configurações dos Alunos'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Aluno',
+            'icon'    => 'fas fa-fw fa-graduation-cap',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Cadastrar Aluno',
+                    'icon' => 'fas fa-fw fa-plus',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Listar Alunos',
+                    'icon' => 'fas fa-fw fa-list',
                     'url'  => '#',
                 ],
+                
+                [
+                    'text' => 'Buscar Aluno',
+                    'icon' => 'fas fa-fw fa-binoculars',
+                    'url'  => '#',
+                    'submenu'=> [
+                        [
+                            'text' => 'Busca por Nome',
+                            'icon' => 'fas fa-fw fa-binoculars',
+                            'url' =>'#',
+                        ],
+                        [
+                            'text' => 'Busca por CPF',
+                            'icon' => 'fas fa-fw fa-binoculars',
+                            'url' =>'#',
+                        ],
+                        [
+                            'text' => 'Busca por Matricula',
+                            'icon' => 'fas fa-fw fa-binoculars',
+                            'url' =>'#',
+                        ]
+                    ]
+                ],
+                
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Configurações das Turmas'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Turmas',
+            'icon' => ' fa fa-fw fa-landmark',
+            'submenu'        => [
+                [
+                    'text' => 'Cadastrar Turma',
+                    'icon' =>'fa fa-fw fa-plus',
+                    'url' => '/turma/create',
+                ],
+                [
+                    'text' => 'Lista Turmas',
+                    'icon' => 'fas fa-fw fa-list',
+                    'url' => '/turma',
+                ],
+                [
+                    'text' => 'Vagas Disponiveis',
+                    'icon' => 'fas fa-fw fa-check',
+                    'url' => '#',
+                ]
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Escolas',
+            'icon' => 'fa fa-fw fa-school',
+            'submenu'        => [
+                [
+                    'text' => 'Lista Escolas',
+                    'icon' => 'fa fa-fw fa-list',
+                    'url' => '/escola',
+                ],
+                [
+                    'text' => 'Adicionar Escola',
+                    'icon' => 'fa fa-fw fa-plus ',
+                    'url'  =>'/escola/create'
+                ]
+            ],
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
     ],
 
     /*

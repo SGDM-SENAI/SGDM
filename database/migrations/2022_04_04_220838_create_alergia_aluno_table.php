@@ -24,9 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('aluno_id');
             $table->foreign('aluno_id')->references('id')->on('aluno');
             $table->primary(['alergia_id', 'aluno_id']);
+            $table->string('observacao',264)->nullable();
         });
-
-
 
     }
 
