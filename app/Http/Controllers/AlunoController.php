@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Aluno;
+use App\Models\Escola;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Redirect;
 
@@ -28,8 +29,8 @@ class AlunoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        //
-        return view('aluno.create');
+        $escolaCases = Escola::all();
+        return view('aluno.create',compact('escolaCases'));
     }
 
     /**

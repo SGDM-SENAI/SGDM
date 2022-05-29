@@ -23,6 +23,7 @@
                 </a>
             </div>        
         </div>
+        
         <div class="row"><p></p></div>
         @if (session('success'))                
             <x-adminlte-alert class="bg-teal text-uppercase" icon="fa fa-lg fa-thumbs-up" title="Feito!" dismissable>

@@ -20,7 +20,7 @@ class EscolaController extends Controller
     {
         //
         $escolacases = Escola::all();
-        return view('escola.index', compact('escolacases'));  
+        return view('escola.index', compact('escolacases'));
     }
 
     /**
@@ -41,17 +41,17 @@ class EscolaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         //dd($request);
-        
+
 
 
         $validatedData = $request->validate([
             'nome_escola' => 'required|max:50',
             'rede' => 'required|max:10',
         ]);
-        
-        try{
+
+        try {
 
             $show = Escola::create($validatedData);
             return redirect('/escola/create')->with('success', 'Escola adicionado com sucesso!');
@@ -69,7 +69,8 @@ class EscolaController extends Controller
      */
     public function show($id)
     {
-        //
+        $escolacases = Escola::all();
+        return(compact('escolacases'));
     }
 
     /**
@@ -83,7 +84,7 @@ class EscolaController extends Controller
         //
         try {
             $escolacase = Escola::findOrFail($id);
-            return view('escola.edit',compact('escolacase'));
+            return view('escola.edit', compact('escolacase'));
         } catch (QueryException $e) {
             $msg = "Desculpe, ocorreu um problema interno. Por favor, contacte o administrador do sistema!";
             return Redirect::back()->withErrors($msg);
@@ -98,12 +99,12 @@ class EscolaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {    
+    {
         //dd($id);
         try {
             $validatedData = $request->validate([
                 'nome_escola' => 'required|max:50',
-                'rede' => 'required|max:10',               
+                'rede' => 'required|max:10',
             ]);
             //dd($validatedData);
             Escola::where('id', $id)->update($validatedData);
@@ -112,8 +113,8 @@ class EscolaController extends Controller
             //$msg = ($e->getMessage());
             $msg = "Desculpe, ocorreu um problema interno. O nome da escola deve conter no máximo 50 caracteres e a rede deve contrar no máximo 4 caracteres. 
                     Por favor, se o erro persistir contacte o administrador do sistema!";
-            return Redirect::back()->withErrors($msg);            
-        }        
+            return Redirect::back()->withErrors($msg);
+        }
     }
 
     /**
@@ -132,7 +133,7 @@ class EscolaController extends Controller
         } catch (QueryException $e) {
             //$msg = ($e->getMessage());
             $msg = "Existe aluno(s) cadastrado(s) nesta escola. Atualize o registro do(s) aluno(s), antes.";
-            return Redirect::back()->withErrors($msg);            
+            return Redirect::back()->withErrors($msg);
         }
     }
 }

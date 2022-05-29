@@ -513,6 +513,8 @@
         <div>
             <h1>escolas</h1>
         </div>
+
+        
         <div>
             <a href="javascript:close('container-escola')">
                 <img src="{{ url('img/close.png') }}" alt="Sair">
@@ -524,74 +526,21 @@
             <thead>
                 <tr>
                     <th style="width : 200px; ">Nome da escola</th>
-                    <th>Tipo de escola</th>
+                    <th>Rede</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
 
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
+                @foreach($escolaCases as $escola)
+                    <tr>
+                        <td>{{$escola["nome_escola"]}}</td>
+                        <td>{{$escola["rede"]}}</td>
+                        <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
 
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
+                    </tr>
+                @endforeach
+                
 
 
             </tbody>
@@ -601,7 +550,11 @@
     <div id="escola-manage" class="hidden-inativo">
         <div class="container-manage">
             <div class="column">
-                <span>Nenhuma escola selecionada até o momento</span>
+                <!-- <span>Nenhuma escola selecionada até o momento</span> -->
+                <div id="escola-selected" class="row">
+                    
+                </div>
+                <input type="hidden" name="escola">
             </div>
             <div class="column">
                 <button type="button" id="button-escola" onclick="replace('escola-manage','container-data-table-escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
