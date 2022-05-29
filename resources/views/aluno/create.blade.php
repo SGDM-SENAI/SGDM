@@ -397,7 +397,7 @@
             <div class="figure-circle circle-ativo"></div>
         </div>
         <div class="container-button-admin">
-            <button type="submit" class="btn  backgroud-primary">@lang('Próxima etapa >')</button>
+            <button type="submit" class="btn  backgroud-primary">@lang('Finalizar cadastro >')</button>
         </div>
 
     </div>
