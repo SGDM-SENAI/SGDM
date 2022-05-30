@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('cep',15)->unique();
             $table->string('logradouro',45);
             $table->string('bairro',45);
-            $table->string('Localidade',45);
             $table->string('numero_casa',7);
             $table->string('complemento',200)->nullable();
-            $table->string('numero_residencia',10);
             $table->timestamps();
         });
     }

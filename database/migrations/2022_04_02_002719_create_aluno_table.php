@@ -23,15 +23,13 @@ return new class extends Migration
             $table->string('nome_mae',64);
             $table->string('email')->unique();
             $table->string('sexo',1);
-            $table->string('tipo_sanguinio',12);
+            $table->string('tipo_sanguineo',12);
             $table->string('estado_civil',32);
             $table->string('manequim',12)->nullable();
             $table->string('numero_calcado',3)->nullable();
             $table->boolean('portador_pne');
             $table->string('descricao_pne',128)->nullable();
-            $table->boolean('medicacao_controlada');
-            $table->string('nome_medicacao',160)->nullable();
-            $table->boolean('possui_bolsa_familia');
+            $table->string('medicacao_controlada',160)->nullable();
             $table->string('numero_bolsa_familia',15)->nullable();
             $table->string('numero_cnis',15)->nullable();
             $table->string('renda_familiar',10);

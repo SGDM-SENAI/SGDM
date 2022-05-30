@@ -58,22 +58,22 @@
             <div class="card-column col-7">
 
                 <div class="form-group col-11">
-                    <x-adminlte-input name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input name="nome_aluno" required label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input name="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input name="rg" required label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input type="number" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="email" name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
+                    <x-adminlte-input type="email" name="email" required label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-select name="escolaridade" label="*Escolaridade:">
+                    <x-adminlte-select required name="escolaridade" label="*Escolaridade:">
                         <x-adminlte-options :options="['NAO ESTUDA' => 'NÃO ESTUDA', 'FUNDAMENTAL' =>'FUNDAMENTAL', 'ENSINO MEDIO' => 'ENSINO MÉDIO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
@@ -97,19 +97,19 @@
 
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="estado_civil" label="*Estado civil:" placeholder="Informe a estado civil do aluno.">
+                    <x-adminlte-select required name="estado_civil" label="*Estado civil:" placeholder="Informe a estado civil do aluno.">
                         <x-adminlte-options :options="['SOLTEIRO' => 'SOLTEIRO', 'CASADO' =>'CASADO', 'VIÚVO' => 'VIÚVO', 'DIVÓRCIADO' => 'DIVÓRCIADO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-select name="estado_civil" label="*Sexo:" placeholder="Informe sexo do aluno.">
+                    <x-adminlte-select required name="estado_civil" label="*Sexo:" placeholder="Informe sexo do aluno.">
                         <x-adminlte-options :options="['M' => 'MASCULINO', 'F' =>'FEMININO', 'N' => 'PREFIRO NÃO DIZER']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
                 <div class="form-group col-12 container-date">
                     <label for="data_nascimento">@lang('*Data de nascimento:')</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento">
+                    <input required type="date" name="data_nascimento" id="data_nascimento">
 
                 </div>
 
