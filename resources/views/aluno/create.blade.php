@@ -82,7 +82,7 @@
                         <x-adminlte-options :options="['1 ANO FUNDAMENTAL' => '1 ANO FUNDAMENTAL', '2 ANO FUNDAMENTAL' =>'2 ANO FUNDAMENTAL', '3 ANO FUNDAMENTAL' => '3 ANO FUNDAMENTAL', '4 ANO FUNDAMENTAL' =>'4 ANO FUNDAMENTAL', '5 ANO FUNDAMENTAL' =>'5 ANO FUNDAMENTAL', '6 ANO FUNDAMENTAL' =>'6 ANO FUNDAMENTAL', '7 ANO FUNDAMENTAL' =>'7 ANO FUNDAMENTAL', '8 ANO FUNDAMENTAL' =>'8 ANO FUNDAMENTAL', '9 ANO FUNDAMENTAL' =>'9 ANO FUNDAMENTAL', '1 ANO ENSINO MEDIO' =>'1 ANO ENSINO MÉDIO', '2 ANO ENSINO MEDIO' =>'2 ANO ENSINO MÉDIO', '3 ANO MEDIO' =>'3 ANO ENSINO MÉDIO', '4 ANO ENSINO MÉDIO' =>'4 ANO ENSINO MÉDIO',]" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-                
+
 
 
             </div>
@@ -514,7 +514,7 @@
             <h1>escolas</h1>
         </div>
 
-        
+
         <div>
             <a href="javascript:close('container-escola')">
                 <img src="{{ url('img/close.png') }}" alt="Sair">
@@ -533,14 +533,14 @@
             <tbody>
 
                 @foreach($escolaCases as $escola)
-                    <tr>
-                        <td>{{$escola["nome_escola"]}}</td>
-                        <td>{{$escola["rede"]}}</td>
-                        <td><button type="button" id="button-escola" onclick="replaceElementOption('container-escola','escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
+                <tr>
+                    <td>{{$escola["nome_escola"]}}</td>
+                    <td>{{$escola["rede"]}}</td>
+                    <td><button type="button" id="button-escola" onclick="selectEscola(<?php echo $escola['id'] . ',' . '\'' . $escola['nome_escola'] . '\'' ?>)" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
 
-                    </tr>
+                </tr>
                 @endforeach
-                
+
 
 
             </tbody>
@@ -550,13 +550,20 @@
     <div id="escola-manage" class="hidden-inativo">
         <div class="container-manage">
             <div class="column">
-                <!-- <span>Nenhuma escola selecionada até o momento</span> -->
-                <div id="escola-selected" class="row">
-                    
+
+                <div id="escola-select" class="row">
+                    <span id="message-null">Nenhum item selecionado até o momento</span>
+                    <div id="escola-selected" class="hidden-ativo">
+                        <div id="container-escola-name">
+                            <span id="escola-selected-name"></span>
+                            <a href="javascript:dropEscola()"><img src="{{ url('img/close-black.png') }}" alt="Sair"></a>
+                        </div>
+                    </div>
+                    <input type="hidden" id="input-escola" name="escola">
                 </div>
-                <input type="hidden" name="escola">
+
             </div>
-            <div class="column">
+            <div id="container-replace-escola" class="column">
                 <button type="button" id="button-escola" onclick="replace('escola-manage','container-data-table-escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
             </div>
         </div>
@@ -569,6 +576,7 @@
 
 @section('js')
 
+<script src="{{ url(mix('js/aluno.js')) }}"></script>
 <script src="{{ url(mix('js/script.js')) }}"></script>
 <script src="http://localhost:8000/vendor/jquery/jquery.min.js"></script>
 <script src="http://localhost:8000/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -15,4 +15,6 @@ mix.styles([
     'resources/css/style.css'
     ], 'public/css/style.css').scripts([
         'resources/js/script.js'
-    ],'public/js/script.js').version();
+    ],'public/js/script.js').scripts([
+        'resources/js/aluno.js'
+    ],'public/js/aluno.js').version();

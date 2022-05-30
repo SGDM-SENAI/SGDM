@@ -72,6 +72,25 @@
         width: 100%;
     }
 
+    #escola-selected{
+        border: 0.5px solid rgb(0, 0, 0);
+        border-radius: 0.2em;
+        width: 46.5vw;
+        height: 45px;
+    }
+
+    #container-escola-name{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1vw;
+    }
+
+    #escola-selected-name{
+        width: 80%;
+    }
 
 
     .container-etapa {
