@@ -11,8 +11,6 @@ class telefone extends Model
     protected $table='telefone';
     protected $fillable=[
         'numero',
-        
-
     ];
 
 }

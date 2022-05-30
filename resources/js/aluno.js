@@ -60,6 +60,11 @@ endereco = {
     'complemtento' : null,
 }
 
+anexo = {
+    'tipo_documento' : null,
+    'arquivo' : null
+}
+
 $(document).ready(() => {
 
     $("#form-dados-gerais").submit((e) => {
