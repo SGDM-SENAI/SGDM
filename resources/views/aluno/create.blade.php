@@ -58,7 +58,7 @@
             <div class="card-column col-7">
 
                 <div class="form-group col-11">
-                    <x-adminlte-input name="nome_aluno" required label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input id="nome_aluno" name="nome_aluno" required label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />

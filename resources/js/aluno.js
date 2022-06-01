@@ -69,6 +69,22 @@ $(document).ready(() => {
 
     $("#form-dados-gerais").submit((e) => {
         e.preventDefault();
+        aluno.nome_aluno = $("#nome_aluno").val();
+        aluno.data_nascimento = $("#nome_aluno").val();
+        aluno.rg_aluno = $("#nome_aluno").val();
+        aluno.cpf_aluno = $("#nome_aluno").val();
+        aluno.nome_pai = $("#nome_aluno").val();
+        aluno.nome_mae = $("#nome_aluno").val();
+        aluno.email = $("#nome_aluno").val();
+        aluno.sexo = $("#nome_aluno").val();
+        aluno.estado_civil = $("#nome_aluno").val();
+        aluno.obs = $("#nome_aluno").val();
+        aluno.nome_social = $("#nome_alu
+        no").val();
+        aluno.turno_escolar = $("#nome_aluno").val();
+        aluno.escola_id = $("#nome_aluno").val();
+        aluno.escolaridade_id = $("#nome_aluno").val();
+        
         replace("form-dados-gerais", "form-dados-saude");
 
     })
