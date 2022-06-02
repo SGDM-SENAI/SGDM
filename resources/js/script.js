@@ -40,7 +40,7 @@ const replaceElementEscola = () => {
 }
 
 const selectEscola = (id,name) => {
-    escola = id;
+    aluno.escola = id;
     document.getElementById("escola-selected-name").innerHTML = name;
     replace('message-null',"escola-selected");
     inactivate('container-replace-escola');
@@ -48,7 +48,7 @@ const selectEscola = (id,name) => {
 }
 
 const dropEscola = () => {
-    escola = null;
+    aluno.escola = null;
     replace("escola-selected",'message-null');
     activate('container-replace-escola');
 }

@@ -1,4 +1,3 @@
-escola = null;
 alergia = null;
 
 aluno = {
@@ -57,7 +56,7 @@ endereco = {
     'logradouro' : null,
     'bairro' : null,
     'numero_casa' : null,
-    'complemtento' : null,
+    'complemetento' : null,
 }
 
 anexo = {
@@ -70,31 +69,48 @@ $(document).ready(() => {
     $("#form-dados-gerais").submit((e) => {
         e.preventDefault();
         aluno.nome_aluno = $("#nome_aluno").val();
-        aluno.data_nascimento = $("#nome_aluno").val();
-        aluno.rg_aluno = $("#nome_aluno").val();
-        aluno.cpf_aluno = $("#nome_aluno").val();
-        aluno.nome_pai = $("#nome_aluno").val();
-        aluno.nome_mae = $("#nome_aluno").val();
-        aluno.email = $("#nome_aluno").val();
-        aluno.sexo = $("#nome_aluno").val();
-        aluno.estado_civil = $("#nome_aluno").val();
-        aluno. = $("#nome_aluno").val();
-        
+        aluno.data_nascimento = $("#data_nascimento").val();
+        aluno.rg_aluno = $("#rg").val();
+        aluno.cpf_aluno = $("#cpf").val();
+        aluno.email = $("#email").val();
+        aluno.sexo = $("#sexo").val();
+        aluno.estado_civil = $("#estado_civil").val();
+        aluno.obs = $("#description-aluno").val();
+        aluno.nome_social = $("#nome_social_aluno").val();
+        aluno.turno_escolar = $("#turno_escolar").val();
+        escolaridade.nome_escolaridade = $("#escolaridade").val();
+        escolaridade.serie_escolar = $("#serie").val();
         replace("form-dados-gerais", "form-dados-saude");
 
     })
 
     $("#form-dados-saude").submit((e) => {
         e.preventDefault();
+        aluno.portador_pne = $("#pne").val();
+        aluno.descricao_pne = $("#descricao_pne").val();
+        aluno.medicacao_controlada = $("#nome_medicacao").val();
+        aluno.tipo_sanguineo = $("#tipo_sanguineo").val();
+        aluno.manequim = $("#manequim").val();
+        aluno.numero_calcado = $("#numero_calcado").val();
         replace("form-dados-saude", "form-dados-responsaveis");
     })
 
     $("#form-dados-responsaveis").submit((e) => {
         e.preventDefault();
+        aluno.nome_pai = $("#nome_pai").val();
+        aluno.nome_mae = $("#nome_mae").val();
+        aluno.renda_familiar = $("#renda_familiar").val();
+        aluno.numero_cnis = $("#numero_cnis").val();
+        aluno.numero_bolsa_familia = $("#numero_bolsa_familia").val();
         replace("form-dados-responsaveis", "form-dados-endereco");
     })
 
     $("#form-dados-endereco").submit((e) => {
+        endereco.cep = $("#cep").val();
+        endereco.bairro = $("#bairro").val();
+        endereco.logradouro = $("#logradouro").val();
+        endereco.numero_casa = $("#numero_casa").val();
+        endereco.complemetento = $("#complemetento").val();
         e.preventDefault();
     })
 
