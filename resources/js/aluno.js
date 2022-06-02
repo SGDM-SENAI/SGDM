@@ -112,6 +112,12 @@ $(document).ready(() => {
         endereco.numero_casa = $("#numero_casa").val();
         endereco.complemetento = $("#complemetento").val();
         e.preventDefault();
+        var answer = confirm("Deseja concluir o cadastro?");
+        if(answer == true){
+                submitForm();
+        }else{
+            replace("form-dados-endereco", "form-dados-gerais");
+        }
     })
 
     $('#alergias').DataTable({
@@ -191,3 +197,26 @@ $(document).ready(() => {
     });
 
 });
+
+const submitForm = () => {
+    
+    // Implementando...
+    
+    $.ajax({
+
+            url: "../../../view_animal.php?stmt=insert",
+            type: "POST",
+            cache: false,
+            processData:false,
+            contentType:false,
+            data: form_data,
+            dataType: 'json'
+
+        }).done((results) => {
+            console.log(results);
+
+            if(typeof(results["success"]) != undefined){
+                id_animal = results["id_animal"];
+                trocar();
+            }
+}
