@@ -39,6 +39,19 @@ const replaceElementEscola = () => {
     activate('container-escola');
 }
 
+const replaceElementOptionsEscolaridade = (ids, sender, novalue) => {
+
+    if(document.getElementById(sender).value != novalue){
+        ids.forEach(element => {
+            activate(element);
+        });
+    }else{
+        ids.forEach(element => {
+            inactivate(element);
+        });
+    }
+}
+
 const selectEscola = (id,name) => {
     aluno.escola = id;
     document.getElementById("escola-selected-name").innerHTML = name;

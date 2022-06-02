@@ -74,11 +74,11 @@
                     <x-adminlte-input id="email" type="email" name="email"  label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-select  name="escolaridade" id="escolaridade" label="*Escolaridade:">
+                    <x-adminlte-select onchange="replaceElementOptionsEscolaridade(['container_serie','container_turno_escolar','container_escola'],'escolaridade','NAO ESTUDA')"  name="escolaridade" id="escolaridade" label="*Escolaridade:">
                         <x-adminlte-options :options="['NAO ESTUDA' => 'NÃO ESTUDA', 'FUNDAMENTAL' =>'FUNDAMENTAL', 'ENSINO MEDIO' => 'ENSINO MÉDIO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-                <div class="form-group col-11">
+                <div id="container_serie" class="form-group col-11 hidden-ativo">
                     <x-adminlte-select name="serie" id="serie" label="Série:">
                         <x-adminlte-options :options="['1 ANO FUNDAMENTAL' => '1 ANO FUNDAMENTAL', '2 ANO FUNDAMENTAL' =>'2 ANO FUNDAMENTAL', '3 ANO FUNDAMENTAL' => '3 ANO FUNDAMENTAL', '4 ANO FUNDAMENTAL' =>'4 ANO FUNDAMENTAL', '5 ANO FUNDAMENTAL' =>'5 ANO FUNDAMENTAL', '6 ANO FUNDAMENTAL' =>'6 ANO FUNDAMENTAL', '7 ANO FUNDAMENTAL' =>'7 ANO FUNDAMENTAL', '8 ANO FUNDAMENTAL' =>'8 ANO FUNDAMENTAL', '9 ANO FUNDAMENTAL' =>'9 ANO FUNDAMENTAL', '1 ANO ENSINO MEDIO' =>'1 ANO ENSINO MÉDIO', '2 ANO ENSINO MEDIO' =>'2 ANO ENSINO MÉDIO', '3 ANO MEDIO' =>'3 ANO ENSINO MÉDIO', '4 ANO ENSINO MÉDIO' =>'4 ANO ENSINO MÉDIO',]" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
@@ -114,14 +114,14 @@
 
                 </div>
 
-                <div class="form-group col-12">
+                <div id="container_escola" class="form-group col-12 hidden-ativo">
                     <label for="escola">Escola:</label>
-                    <a href="javascript:activate('container-escola')">
+                    <a id="escola" href="javascript:activate('container-escola')">
                         <div class="form-control">Informe a escola do aluno</div>
                     </a>
                 </div>
 
-                <div class="form-group col-12">
+                <div id="container_turno_escolar" class="hidden-ativo form-group col-12">
                     <x-adminlte-select id="turno_escolar" name="turno_escolar" label="Turno escolar:">
                         <x-adminlte-options :options="['MATUTINO' => 'MATUTINO', 'VESPERTINO' =>'VESPERTINO', 'NOTURNO' => 'NOTURNO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
