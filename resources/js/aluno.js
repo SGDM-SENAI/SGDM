@@ -1,67 +1,67 @@
 alergia = null;
 
 aluno = {
-    'nome_aluno' : null,
-    'data_nascimento' : null,
-    'rg_aluno' : null,
-    'cpf_aluno' : null,
-    'nome_pai' : null,
-    'nome_mae' : null,
-    'email' : null,
-    'sexo' : null,
-    'tipo_sanguineo' : null,
-    'estado_civil' : null,
-    'manequim' : null,
-    'numero_calcado' : null,
-    'portador_pne' : null,
-    'descricao_pne' : null,
-    'medicacao_controlada' : null,
-    'numero_bolsa_familia' : null,
-    'numero_cnis' : null,
-    'renda_familiar' : null,
-    'obs' : null,
-    'nome_social' : null,
-    'turno_escolar' : null,
-    'endereço_id' : null,
-    'escola_id' : null,
-    'escolaridade_id' : null
+    'nome_aluno': null,
+    'data_nascimento': null,
+    'rg_aluno': null,
+    'cpf_aluno': null,
+    'nome_pai': null,
+    'nome_mae': null,
+    'email': null,
+    'sexo': null,
+    'tipo_sanguineo': null,
+    'estado_civil': null,
+    'manequim': null,
+    'numero_calcado': null,
+    'portador_pne': null,
+    'descricao_pne': null,
+    'medicacao_controlada': null,
+    'numero_bolsa_familia': null,
+    'numero_cnis': null,
+    'renda_familiar': null,
+    'obs': null,
+    'nome_social': null,
+    'turno_escolar': null,
+    'endereço_id': null,
+    'escola_id': null,
+    'escolaridade_id': null
 }
 
 escola = {
-    'nome_escola' : null,
-    'rede' : null
+    'nome_escola': null,
+    'rede': null
 }
 
 escolaridade = {
-    'nome_escolaridade' : null,
-    'serie_escolar' : null 
+    'nome_escolaridade': null,
+    'serie_escolar': null
 }
 
 alergia_aluno = {
-    'alergia_id' : null,
-    'aluno_id' : null
+    'alergia_id': null,
+    'aluno_id': null
 }
 
 alergia = {
-    'tipo_alergia' : null,
-    'nome_alergia' : null
+    'tipo_alergia': null,
+    'nome_alergia': null
 }
 
 telefone = {
-    'numero' : null 
+    'numero': null
 }
 
 endereco = {
-    'cep' : null,
-    'logradouro' : null,
-    'bairro' : null,
-    'numero_casa' : null,
-    'complemetento' : null,
+    'cep': null,
+    'logradouro': null,
+    'bairro': null,
+    'numero_casa': null,
+    'complemetento': null,
 }
 
 anexo = {
-    'tipo_documento' : null,
-    'arquivo' : null
+    'tipo_documento': null,
+    'arquivo': null
 }
 
 $(document).ready(() => {
@@ -113,9 +113,9 @@ $(document).ready(() => {
         endereco.complemetento = $("#complemetento").val();
         e.preventDefault();
         var answer = confirm("Deseja concluir o cadastro?");
-        if(answer == true){
-                submitForm();
-        }else{
+        if (answer == true) {
+            submitForm();
+        } else {
             replace("form-dados-endereco", "form-dados-gerais");
         }
     })
@@ -158,6 +158,30 @@ $(document).ready(() => {
         "pageLength": 5
     });
 
+    const submitForm = () => {
+
+    // Implementando...
+
+    $.ajax({
+
+        url: "../../../view_animal.php?stmt=insert",
+        type: "POST",
+        cache: false,
+        processData: false,
+        contentType: false,
+        data: form_data,
+        dataType: 'json'
+
+    }).done((results) => {
+        console.log(results);
+
+        if (typeof (results["success"]) != undefined) {
+            id_animal = results["id_animal"];
+            trocar();
+        }
+    })
+}
+
     $('#escolas').DataTable({
         "bProcessing": true,
         "deferRender": true,
@@ -198,25 +222,4 @@ $(document).ready(() => {
 
 });
 
-const submitForm = () => {
-    
-    // Implementando...
-    
-    $.ajax({
 
-            url: "../../../view_animal.php?stmt=insert",
-            type: "POST",
-            cache: false,
-            processData:false,
-            contentType:false,
-            data: form_data,
-            dataType: 'json'
-
-        }).done((results) => {
-            console.log(results);
-
-            if(typeof(results["success"]) != undefined){
-                id_animal = results["id_animal"];
-                trocar();
-            }
-}
