@@ -529,7 +529,7 @@
                 </tr>
             </thead>
             <tbody>
-
+                <?php var_dump($alergiaCases)?>
                 @foreach($escolaCases as $escola)
                 <tr>
                     <td>{{$escola["nome_escola"]}}</td>

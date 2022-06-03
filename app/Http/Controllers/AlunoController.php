@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Aluno;
 use App\Models\Escola;
+use App\Models\Alergia;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Redirect;
 
@@ -30,7 +31,8 @@ class AlunoController extends Controller
      */
     public function create(){
         $escolaCases = Escola::all();
-        return view('aluno.create',compact('escolaCases'));
+        $alergiaCases = Alergia::all();
+        return view('aluno.create',compact('escolaCases','alergiaCases'));
     }
 
     /**
