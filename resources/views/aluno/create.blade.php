@@ -23,7 +23,7 @@
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
         <div class="card-header backgroud-primary">
             <div class="d-flex justify-content-between w-100">
-                
+
                 <h3 class="card-title">
                     <span>@lang('Formulário de cadastro do aluno')</span>
                 </h3>
@@ -59,7 +59,7 @@
             <div class="card-column col-7">
 
                 <div class="form-group col-11">
-                    <x-adminlte-input id="nome_aluno" name="nome_aluno"  label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input id="nome_aluno" name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-input id="nome_social_aluno" name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />
@@ -68,13 +68,13 @@
                     <x-adminlte-input name="rg" id="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" id="cpf"  name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input type="number" id="cpf" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input id="email" type="email" name="email"  label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
+                    <x-adminlte-input id="email" type="email" name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-select onchange="replaceElementOptionsEscolaridade(['container_serie','container_turno_escolar','container_escola'],'escolaridade','NAO ESTUDA')"  name="escolaridade" id="escolaridade" label="*Escolaridade:">
+                    <x-adminlte-select onchange="replaceElementOptionsEscolaridade(['container_serie','container_turno_escolar','container_escola'],'escolaridade','NAO ESTUDA')" name="escolaridade" id="escolaridade" label="*Escolaridade:">
                         <x-adminlte-options :options="['NAO ESTUDA' => 'NÃO ESTUDA', 'FUNDAMENTAL' =>'FUNDAMENTAL', 'ENSINO MEDIO' => 'ENSINO MÉDIO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
@@ -104,13 +104,13 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-select id="sexo"  name="sexo" label="*Sexo:" placeholder="Informe sexo do aluno.">
+                    <x-adminlte-select id="sexo" name="sexo" label="*Sexo:" placeholder="Informe sexo do aluno.">
                         <x-adminlte-options :options="['M' => 'MASCULINO', 'F' =>'FEMININO', 'N' => 'PREFIRO NÃO DIZER']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
                 <div class="form-group col-12 container-date">
                     <label for="data_nascimento">@lang('*Data de nascimento:')</label>
-                    <input  type="date" name="data_nascimento" id="data_nascimento">
+                    <input type="date" name="data_nascimento" id="data_nascimento">
 
                 </div>
 
@@ -215,7 +215,7 @@
                     </x-adminlte-select>
                 </div>
 
-                <div class="form-group col-12" >
+                <div class="form-group col-12">
                     <x-adminlte-input type="number" name="numero_calcado" id="numero_calcado" label="Número do calçado do aluno:" placeholder="Informe o número do calçado do aluno." enable-feedback />
                 </div>
 
@@ -291,7 +291,7 @@
                         <x-adminlte-options :options="['POSSUI' => 'ALUNO POSSUI BOLSA FAMÍLIA', 'NÃO POSSUI' =>'ALUNO NÃO POSSUI BOLSA FAMÍLIA']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
-                <div class="form-group col-12" >
+                <div class="form-group col-12">
                     <x-adminlte-input type="number" name="numero_bolsa_familia" id="numero_bolsa_familia" label="Número do bolsa família:" placeholder="Informe o número do bolsa família." enable-feedback />
                 </div>
                 <div class="form-group col-11">
@@ -426,11 +426,11 @@
             </thead>
             <tbody>
 
-            @foreach($alergiaCases as $alergia)
+                @foreach($alergiaCases as $alergia)
                 <tr>
                     <td>{{$alergia["nome_alergia"]}}</td>
                     <td>{{$alergia["tipo_alergia"]}}</td>
-                    <td>
+                    <td><button type="button" id="button-escola" onclick="selectAlergia(<?php echo $alergia['id'] . ',' . '\'' . $alergia['nome_alergia'] . '\'' ?>)" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
 
                 </tr>
                 @endforeach
@@ -442,12 +442,14 @@
     <div id="alergia-manage" class="hidden-inativo">
         <div class="container-manage">
             <div class="column">
-                <span>Nenhuma alergia selecionada até o momento</span>
+                <span id="message-null-alergia">Nenhuma alergia selecionada até o momento</span>
             </div>
             <div class="column">
                 <button type="button" id="button-alergia" onclick="replace('alergia-manage','container-data-table')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
             </div>
+            
         </div>
+        <div id="container-select-alergia"></div>
     </div>
 </section>
 
@@ -456,7 +458,6 @@
         <div>
             <h1>escolas</h1>
         </div>
-
 
         <div>
             <a href="javascript:close('container-escola')">
@@ -493,7 +494,7 @@
 
                 <div id="escola-select" class="row">
                     <span id="message-null">Nenhum item selecionado até o momento</span>
-                    <div id="escola-selected" class="hidden-ativo">
+                    <div class="item-selected" class="hidden-ativo">
                         <div id="container-escola-name">
                             <span id="escola-selected-name"></span>
                             <a href="javascript:dropEscola()"><img src="{{ url('img/close-black.png') }}" alt="Sair"></a>

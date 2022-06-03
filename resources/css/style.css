@@ -72,11 +72,17 @@
         width: 100%;
     }
 
-    #escola-selected{
+    .item-selected{
         border: 0.5px solid rgb(0, 0, 0);
         border-radius: 0.2em;
         width: 46.5vw;
         height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1vw;
+        margin: 1vh 0 0 1vw;
+        color: rgb(0, 0, 0);
     }
 
     #container-escola-name{
@@ -86,10 +92,6 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 1vw;
-    }
-
-    #escola-selected-name{
-        width: 80%;
     }
 
 

@@ -41,29 +41,71 @@ const replaceElementEscola = () => {
 
 const replaceElementOptionsEscolaridade = (ids, sender, novalue) => {
 
-    if(document.getElementById(sender).value != novalue){
+    if (document.getElementById(sender).value != novalue) {
         ids.forEach(element => {
             activate(element);
         });
-    }else{
+    } else {
         ids.forEach(element => {
             inactivate(element);
         });
     }
 }
 
-const selectEscola = (id,name) => {
+const selectEscola = (id, name) => {
     aluno.escola = id;
     document.getElementById("escola-selected-name").innerHTML = name;
-    replace('message-null',"escola-selected");
+    replace('message-null', "item-selected");
     inactivate('container-replace-escola');
-    replace('container-data-table-escola','escola-manage'); 
+    replace('container-data-table-escola', 'escola-manage');
 }
 
 const dropEscola = () => {
     aluno.escola = null;
-    replace("escola-selected",'message-null');
+    replace("item-selected", 'message-null');
     activate('container-replace-escola');
+}
+
+const selectAlergia = (id, name) => {
+    if (alergias.includes(id) == false) {
+        alergias.push(id);
+        createItemList('container-select-alergia', `alergia-${name}`, name)
+        if (alergias.length == 1) {
+            replace("message-null-alergia", "container-select-alergia");
+        }
+        replace('container-data-table', 'alergia-manage');
+    }
+}
+
+const createItemList = (rawContainer, id, rawText) => {
+
+    var container = document.getElementById(rawContainer);
+
+    element = document.createElement('div');
+    element.setAttribute('class', 'item-selected');
+    element.setAttribute('id', id);
+
+    contentText = document.createElement('span');
+    text = document.createTextNode(rawText);
+    contentText.appendChild(text);
+
+    link = document.createElement('a');
+    link.setAttribute('href', `javascript:deleteElement(\'${id}\')`)
+
+    back = document.createElement('img');
+    back.setAttribute('src', '../img/close-black.png');
+    back.setAttribute('style', 'width:15px');
+    back.setAttribute('alt', 'Fechar');
+    link.appendChild(back);
+
+    element.appendChild(contentText);
+    element.appendChild(link);
+    container.appendChild(element);
+
+}
+
+const deleteElement = (id) => {
+    document.getElementById(id).remove()
 }
 
 const replaceAlergia = () => {

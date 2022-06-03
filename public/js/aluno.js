@@ -1,4 +1,4 @@
-alergia = null;
+alergias = [];
 
 aluno = {
     'nome_aluno': null,
