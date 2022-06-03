@@ -69,7 +69,7 @@ const dropEscola = () => {
 const selectAlergia = (id, name) => {
     if (alergias.includes(id) == false) {
         alergias.push(id);
-        createItemList('container-select-alergia', `alergia-${name}`, name)
+        createItemList('container-select-alergia', `alergia-${id}`, name,`javascript:dropAlergia(\'${id}\')`)
         if (alergias.length == 1) {
             replace("message-null-alergia", "container-select-alergia");
         }
@@ -77,7 +77,13 @@ const selectAlergia = (id, name) => {
     }
 }
 
-const createItemList = (rawContainer, id, rawText) => {
+const dropAlergia = (id) => {
+    index = alergias.indexOf(id);
+    alergias.splice(index,1);
+    deleteElement(`alergia-${id}`);
+}
+
+const createItemList = (rawContainer, id, rawText,stmtDelete) => {
 
     var container = document.getElementById(rawContainer);
 
@@ -90,7 +96,7 @@ const createItemList = (rawContainer, id, rawText) => {
     contentText.appendChild(text);
 
     link = document.createElement('a');
-    link.setAttribute('href', `javascript:deleteElement(\'${id}\')`)
+    link.setAttribute('href', stmtDelete)
 
     back = document.createElement('img');
     back.setAttribute('src', '../img/close-black.png');
