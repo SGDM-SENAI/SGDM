@@ -426,69 +426,14 @@
             </thead>
             <tbody>
 
+            @foreach($alergiaCases as $alergia)
                 <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
+                    <td>{{$alergia["nome_alergia"]}}</td>
+                    <td>{{$alergia["tipo_alergia"]}}</td>
+                    <td>
 
                 </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td><button type="button" id="button-alergia" onclick="replaceElementOption('container-alergia','alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button></td>
-
-                </tr>
-
+                @endforeach
 
             </tbody>
 
@@ -529,7 +474,6 @@
                 </tr>
             </thead>
             <tbody>
-                <?php var_dump($alergiaCases)?>
                 @foreach($escolaCases as $escola)
                 <tr>
                     <td>{{$escola["nome_escola"]}}</td>
@@ -538,8 +482,6 @@
 
                 </tr>
                 @endforeach
-
-
 
             </tbody>
 

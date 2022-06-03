@@ -51,7 +51,19 @@ class AlergiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nome_alergia' => 'required|max:128',
+            'tipo_alergia' => 'required|max:64',
+        ]);
+
+        try {
+
+            $show = Alergia::create($validatedData);
+            return redirect('/alergia/create')->with('success', 'alergia adicionada com sucesso!');
+        } catch (QueryException $e) {
+            $msg = "Esta alergia já está cadastrado. Por favor, informe uma alergia ainda não cadastrado!";
+            return Redirect::back()->withErrors($msg);
+        }
     }
 
     /**

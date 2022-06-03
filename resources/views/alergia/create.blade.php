@@ -15,7 +15,7 @@
 
 <!-- form-dados-gerais  -->
 
-<form action="#" id="form-dados-gerais">
+<form action="{{ route('alergia.store') }}" method="post" id="form-dados-gerais">
 
     <!-- Os formulários não possuem method, pois são tratados via ajax -->
 
@@ -41,7 +41,7 @@
         @endif
         @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>@lang('Whoops!') </strong>@lang('Houve alguns problemas com sua entrada.') <br><br>
+            <strong>@lang('Whoops!') </strong>@lang('Houveram alguns problemas com sua entrada.') <br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -55,13 +55,13 @@
 
         <div class="card-body">
 
-            <div class="card-column col-7">
+            <div class="card-column col-12">
 
-                <div class="form-group col-11">
-                    <x-adminlte-input name="Nome alergia" label="Nome da Alergia:" placeholder="Informe o nome da alergia a ser cadastrado." enable-feedback />
+                <div class="form-group col-12">
+                    <x-adminlte-input name="nome_alergia" label="Nome da Alergia:" placeholder="Informe o nome da alergia a ser cadastrado." enable-feedback />
                 </div>
-                <div class="form-group col-11">
-                    <x-adminlte-input name="Tipo alergia" label="Tipo da Alergia:" placeholder="Informe o tipo da alergia a ser cadastrado." enable-feedback />
+                <div class="form-group col-12">
+                    <x-adminlte-input name="tipo_alergia" label="Tipo da Alergia:" placeholder="Informe o tipo da alergia a ser cadastrado." enable-feedback />
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
     </div>
     <div class="container-options">
         <div class="container-button-admin">
-            <button type="submit" class=" btn backgroud-primary">@lang('Finalizar')</button>
+            <button type="submit" class=" btn backgroud-primary">@lang('Cadastrar')</button>
         </div>
     </div>
 </form>
