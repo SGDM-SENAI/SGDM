@@ -43,7 +43,7 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo json_encode("teste");
     }
 
     /**

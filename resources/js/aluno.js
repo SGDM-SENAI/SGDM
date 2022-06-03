@@ -158,29 +158,6 @@ $(document).ready(() => {
         "pageLength": 5
     });
 
-    const submitForm = () => {
-
-    // Implementando...
-
-    $.ajax({
-
-        url: "../../../view_animal.php?stmt=insert",
-        type: "POST",
-        cache: false,
-        processData: false,
-        contentType: false,
-        data: form_data,
-        dataType: 'json'
-
-    }).done((results) => {
-        console.log(results);
-
-        if (typeof (results["success"]) != undefined) {
-            id_animal = results["id_animal"];
-            trocar();
-        }
-    })
-}
 
     $('#escolas').DataTable({
         "bProcessing": true,
@@ -222,4 +199,26 @@ $(document).ready(() => {
 
 });
 
+const submitForm = () => {
+
+    // Implementando...
+
+
+    $.ajax({
+
+        url: "{{ route('aluno.store') }}",
+        data:{
+            '_token': '{{ csrf_token() }}'
+        },
+        type: "POST",
+        dataType: 'json'
+
+    }).done((results) => {
+        console.log(results);
+
+        if (typeof (results["success"]) != undefined) {
+            
+        }
+    })
+}
 
