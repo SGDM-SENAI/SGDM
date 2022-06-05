@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('endereco', function (Blueprint $table) {
             $table->id();
-            $table->string('cep',15)->unique();
+            $table->string('cep',15);
             $table->string('logradouro',45);
             $table->string('bairro',45);
             $table->string('numero_casa',7);

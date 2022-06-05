@@ -139,14 +139,16 @@ async function viacepComplete() {
         var cep = parseInt(document.getElementById("cep").value);
         const url = `https://viacep.com.br/ws/${cep}/json/`;
         const dados = await fetch(url);
+        
         const endereco = await dados.json();
-        console.log(endereco)
         if (typeof endereco.erro == "undefined") {
-            document.getElementById("localidade").value = endereco.localidade;
             document.getElementById("bairro").value = endereco.bairro;
             document.getElementById("logradouro").value = endereco.logradouro;
         }
+        
     } catch (error) {
+        alert(1);
+        console.log(error);
         document.getElementById("cep").classList.add("input-invalid");
     }
 }

@@ -56,7 +56,7 @@ endereco = {
     'logradouro': null,
     'bairro': null,
     'numero_casa': null,
-    'complemetento': null,
+    'complemento': null,
 }
 
 anexo = {
@@ -110,7 +110,7 @@ $(document).ready(() => {
         endereco.bairro = $("#bairro").val();
         endereco.logradouro = $("#logradouro").val();
         endereco.numero_casa = $("#numero_casa").val();
-        endereco.complemetento = $("#complemetento").val();
+        endereco.complemento = $("#complemento").val();
         e.preventDefault();
         var answer = confirm("Deseja concluir o cadastro?");
         if (answer == true) {

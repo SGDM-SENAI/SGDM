@@ -7,6 +7,7 @@ use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\TelefoneController;
 use App\Http\Controllers\AlergiaController;
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioController;
 
 /*
@@ -32,12 +33,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
- Route::resource('/escola',EscolaController::class);
- 
- Route::resource('/telefone',TelefoneController::class);
- 
- Route::resource('/aluno', AlunoController::class);
+Route::resource('/escola', EscolaController::class);
 
- Route::resource('/alergia', AlergiaController::class);
+Route::post('/escola/storeJson', [EscolaController::class, 'storeJsonData'])->name('escola.storeJsonData');
 
- Route::resource('/professor', ProfessorController::class);
+Route::resource('/telefone', TelefoneController::class);
+
+Route::resource('/aluno', AlunoController::class);
+
+Route::resource('/alergia', AlergiaController::class);
+
+Route::resource('/professor', ProfessorController::class);
+
+Route::resource('/endereco', EnderecoController::class);
+
+Route::post('/endereco/storeJson', [EnderecoController::class, 'storeJsonData'])->name('endereco.storeJsonData');

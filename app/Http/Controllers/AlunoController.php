@@ -21,7 +21,7 @@ class AlunoController extends Controller
     {
         //
         $alunocases = Aluno::all();
-        return view('aluno.index', compact('alunocases')); 
+        return view('aluno.index', compact('alunocases'));
     }
 
     /**
@@ -29,10 +29,11 @@ class AlunoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
+    public function create()
+    {
         $escolaCases = Escola::all();
         $alergiaCases = Alergia::all();
-        return view('aluno.create',compact('escolaCases','alergiaCases'));
+        return view('aluno.create', compact('escolaCases', 'alergiaCases'));
     }
 
     /**
@@ -43,13 +44,21 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        $a = 1;
-        $d = 2;
 
-        if($request['aluno']['nome_aluno'] == null && $request['aluno']['nome_aluno']){
-            echo json_encode('pega');
+        // extract($request['aluno']);
+        // if($request['aluno']['nome_aluno'] == null && $request['aluno']['nome_aluno']){
+        //     echo json_encode('pega');
+        // }
+
+        try {
+            $validatedData = $request->validate([
+                'aluno.nome_aluno' => 'required|max:50',
+            ]);
+
+            
+        } catch (\Exception $e) {
+            echo json_encode("Tratamento de erro");
         }
-        
     }
 
     /**

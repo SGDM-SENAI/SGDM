@@ -59,19 +59,19 @@
             <div class="card-column col-7">
 
                 <div class="form-group col-11">
-                    <x-adminlte-input id="nome_aluno" name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input id="nome_aluno" maxlength="64" name="nome_aluno" label="*Nome do aluno:" placeholder="Informe o nome do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input id="nome_social_aluno" name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input id="nome_social_aluno" maxlength="15" name="nome_social_aluno" label="Nome social do aluno:" placeholder="Informe o nome social do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input name="rg" id="rg" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input name="rg" id="rg" maxlength="15" label="*RG:" placeholder="Informe o rg do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" id="cpf" name="cpf" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
+                    <x-adminlte-input type="number" id="cpf" name="cpf" maxlength="15" label="Cpf:" placeholder="Informe o cpf do aluno a ser cadastrado." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input id="email" type="email" name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
+                    <x-adminlte-input id="email" type="email" maxlength="128" name="email" label="*Email:" placeholder="Informe o email do aluno ou responsável" enable-feedback />
                 </div>
                 <div class="form-group col-11">
                     <x-adminlte-select onchange="replaceElementOptionsEscolaridade(['container_serie','container_turno_escolar','container_escola'],'escolaridade','NAO ESTUDA')" name="escolaridade" id="escolaridade" label="*Escolaridade:">
@@ -371,7 +371,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <x-adminlte-input id="numero_casa" name="numero_casa" label="*Numero da casa:" placeholder="informe o numero da casa onde o aluno reside." enable-feedback />
+                    <x-adminlte-input id="numero_casa" name="numero_casa" label="*Numero da casa:" placeholder="informe o numero da casa onde o aluno reside." type="number" enable-feedback />
                 </div>
 
                 <div class="form-group col-12">
@@ -525,15 +525,13 @@
 <script>
     const submitForm = () => {
 
-        // Implementando...
-
-
         $.ajax({
 
-            url: "{{ route('aluno.store') }}",
+            url: "{{ route('endereco.storeJsonData') }}",
             data: {
                 '_token': '{{ csrf_token() }}',
-                aluno
+                endereco,
+
             },
             type: "POST",
             dataType: 'json'
@@ -541,9 +539,27 @@
         }).done((results) => {
             console.log(results);
 
-            if (typeof(results["success"]) != undefined) {
+            // if (typeof(results["success"]) != undefined) {
 
-            }
+            //     $.ajax({
+
+            //         url: "{{ route('aluno.store') }}",
+            //         data: {
+            //             '_token': '{{ csrf_token() }}',
+            //             aluno,
+
+            //         },
+            //         type: "POST",
+            //         dataType: 'json'
+
+            //     }).done((results) => {
+            //         console.log(results);
+
+            //         if (typeof(results["success"]) != undefined) {
+
+            //         }
+            //     })
+            // }
         })
     }
 </script>
