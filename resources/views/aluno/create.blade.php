@@ -494,12 +494,6 @@
 
                 <div id="escola-select" class="row">
                     <span id="message-null">Nenhum item selecionado até o momento</span>
-                    <div class="item-selected" class="hidden-ativo">
-                        <div id="container-escola-name">
-                            <span id="escola-selected-name"></span>
-                            <a href="javascript:dropEscola()"><img src="{{ url('img/close-black.png') }}" alt="Sair"></a>
-                        </div>
-                    </div>
                     <input type="hidden" id="input-escola" name="escola">
                 </div>
 
@@ -508,6 +502,7 @@
                 <button type="button" id="button-escola" onclick="replace('escola-manage','container-data-table-escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
             </div>
         </div>
+        <div id="container-select-escola"></div>
     </div>
 </section>
 

@@ -43,10 +43,13 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            "aluno['nome_aluno']" => 'required|max:50',
-        ]);
-        echo json_encode($request['aluno']['nome_aluno']);
+        $a = 1;
+        $d = 2;
+
+        if($request['aluno']['nome_aluno'] == null && $request['aluno']['nome_aluno']){
+            echo json_encode('pega');
+        }
+        
     }
 
     /**

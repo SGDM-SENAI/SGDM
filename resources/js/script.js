@@ -53,23 +53,27 @@ const replaceElementOptionsEscolaridade = (ids, sender, novalue) => {
 }
 
 const selectEscola = (id, name) => {
-    aluno.escola = id;
-    document.getElementById("escola-selected-name").innerHTML = name;
-    replace('message-null', "item-selected");
-    inactivate('container-replace-escola');
-    replace('container-data-table-escola', 'escola-manage');
+    
+    if (aluno.escola == null) {
+        aluno.escola = id;
+        createItemList('container-select-escola', `escola-${id}`, name, `javascript:dropEscola(\'${id}\')`)
+        replace('message-null', 'container-select-escola');
+        inactivate('container-replace-escola');
+        replace('container-data-table-escola', 'escola-manage');
+    }
+
 }
 
-const dropEscola = () => {
+const dropEscola = (id) => {
     aluno.escola = null;
-    replace("item-selected", 'message-null');
+    deleteElement(`escola-${id}`);
     activate('container-replace-escola');
 }
 
 const selectAlergia = (id, name) => {
     if (alergias.includes(id) == false) {
         alergias.push(id);
-        createItemList('container-select-alergia', `alergia-${id}`, name,`javascript:dropAlergia(\'${id}\')`)
+        createItemList('container-select-alergia', `alergia-${id}`, name, `javascript:dropAlergia(\'${id}\')`)
         if (alergias.length == 1) {
             replace("message-null-alergia", "container-select-alergia");
         }
@@ -79,11 +83,11 @@ const selectAlergia = (id, name) => {
 
 const dropAlergia = (id) => {
     index = alergias.indexOf(id);
-    alergias.splice(index,1);
+    alergias.splice(index, 1);
     deleteElement(`alergia-${id}`);
 }
 
-const createItemList = (rawContainer, id, rawText,stmtDelete) => {
+const createItemList = (rawContainer, id, rawText, stmtDelete) => {
 
     var container = document.getElementById(rawContainer);
 
