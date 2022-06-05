@@ -199,26 +199,5 @@ $(document).ready(() => {
 
 });
 
-const submitForm = () => {
 
-    // Implementando...
-
-
-    $.ajax({
-
-        url: "{{ route('aluno.store') }}",
-        data:{
-            '_token': '{{ csrf_token() }}'
-        },
-        type: "POST",
-        dataType: 'json'
-
-    }).done((results) => {
-        console.log(results);
-
-        if (typeof (results["success"]) != undefined) {
-            
-        }
-    })
-}
 

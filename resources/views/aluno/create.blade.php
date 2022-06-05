@@ -447,7 +447,7 @@
             <div class="column">
                 <button type="button" id="button-alergia" onclick="replace('alergia-manage','container-data-table')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
             </div>
-            
+
         </div>
         <div id="container-select-alergia"></div>
     </div>
@@ -517,6 +517,7 @@
 
 @section('js')
 
+
 <script src="{{ url(mix('js/aluno.js')) }}"></script>
 <script src="{{ url(mix('js/script.js')) }}"></script>
 <script src="http://localhost:8000/vendor/jquery/jquery.min.js"></script>
@@ -526,6 +527,31 @@
 <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 
+<script>
+    const submitForm = () => {
+
+        // Implementando...
+
+
+        $.ajax({
+
+            url: "{{ route('aluno.store') }}",
+            data: {
+                '_token': '{{ csrf_token() }}',
+                aluno
+            },
+            type: "POST",
+            dataType: 'json'
+
+        }).done((results) => {
+            console.log(results);
+
+            if (typeof(results["success"]) != undefined) {
+
+            }
+        })
+    }
+</script>
 
 @endsection
 
