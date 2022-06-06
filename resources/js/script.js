@@ -54,8 +54,8 @@ const replaceElementOptionsEscolaridade = (ids, sender, novalue) => {
 
 const selectEscola = (id, name) => {
     
-    if (aluno.escola == null) {
-        aluno.escola = id;
+    if (aluno.escola_id == null) {
+        aluno.escola_id = id;
         createItemList('container-select-escola', `escola-${id}`, name, `javascript:dropEscola(\'${id}\')`)
         replace('message-null', 'container-select-escola');
         inactivate('container-replace-escola');
@@ -65,7 +65,7 @@ const selectEscola = (id, name) => {
 }
 
 const dropEscola = (id) => {
-    aluno.escola = null;
+    aluno.escola_id = null;
     deleteElement(`escola-${id}`);
     activate('container-replace-escola');
 }

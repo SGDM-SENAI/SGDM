@@ -18,7 +18,7 @@ class Aluno extends Model
         'nome_mae',
         'email',
         'sexo',
-        'tipo_saguineo',
+        'tipo_sanguineo',
         'estado_civil',
         'manequim',
         'numero_calcado',
@@ -33,6 +33,7 @@ class Aluno extends Model
         'turno_escolar',
         'endereco_id',
         'escola_id',
-        'escolaridade_id'
+        'nivel_escolaridade',
+        'serie_escolar'
     ];
 }

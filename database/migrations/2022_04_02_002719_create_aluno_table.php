@@ -36,14 +36,14 @@ return new class extends Migration
             $table->string('obs',200)->nullable();
             $table->string('nome_social',15)->nullable();
             $table->string('turno_escolar',15)->nullable();
+            $table->string('nivel_escolaridade',45)->nullable();
+            $table->string('serie_escolar',10)->nullable();
             
 
             $table->unsignedBigInteger('endereco_id');
             $table->foreign('endereco_id')->references('id')->on('endereco');
             $table->unsignedBigInteger('escola_id')->nullable();
             $table->foreign('escola_id')->references('id')->on('escola')->nullable();
-            $table->unsignedBigInteger('escolaridade_id');
-            $table->foreign('escolaridade_id')->references('id')->on('escolaridade');
             $table->timestamps();
        
        

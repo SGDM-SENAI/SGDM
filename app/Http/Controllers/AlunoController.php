@@ -45,19 +45,58 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
 
-        // extract($request['aluno']);
-        // if($request['aluno']['nome_aluno'] == null && $request['aluno']['nome_aluno']){
-        //     echo json_encode('pega');
-        // }
 
         try {
+
             $validatedData = $request->validate([
-                'aluno.nome_aluno' => 'required|max:50',
+                'aluno.nome_aluno' => 'required|max:64',
+                'aluno.data_nascimento' => 'required',
+                'aluno.rg_aluno' => 'required|max:15',
+                'aluno.cpf_aluno' => 'max:15',
+                'aluno.nome_mae' => 'required|max:64',
+                'aluno.nome_pai' => 'max:64',
+                'aluno.email' => 'required|max:255',
+                'aluno.sexo' => 'required|max:1',
+                'aluno.tipo_sanguineo' => 'required|max:12',
+                'aluno.estado_civil' => 'required|max:32',
+                'aluno.manequim' => 'max:12',
+                'aluno.numero_calcado' => 'max:3',
+                'aluno.portador_pne' => 'required|max:1',
+                'aluno.descricao_pne' => 'max:128',
+                'aluno.medicacao_controlada' => 'max:160',
+                'aluno.numero_bolsa_familia' => 'max:15',
+                'aluno.numero_cnis' => 'max:15',
+                'aluno.renda_familiar' => 'required|max:10',
+                'aluno.obs' => 'max:200',
+                'aluno.nome_social' => 'max:15',
+                'aluno.turno_escolar' => 'max:15',
+                'aluno.nivel_escolaridade' => 'max:45',
+                'aluno.serie_escolar' => 'max:10',
+                'aluno.endereco_id' => 'required|max:20',
+                'aluno.escola_id' => 'max:20',
             ]);
 
-            
+
+            $show = Aluno::create($validatedData['aluno']);
+
+            $validate = [
+                'success' => 1,
+                'message' => 'aluno cadastrado com sucesso',
+                // 'id' => $show['id'],
+
+            ];
+
+            echo json_encode($validate);
         } catch (\Exception $e) {
-            echo json_encode("Tratamento de erro");
+
+            $validate = [
+                'success' => 0,
+                'message' => "Não foi possível cadastrar esse aluno, por favor revise os dados inseridos e tente novamente",
+                'error' => $e,
+                'e' => $validatedData
+            ];
+
+            echo json_encode($validate);
         }
     }
 

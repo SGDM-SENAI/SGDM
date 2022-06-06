@@ -80,7 +80,7 @@
                 </div>
                 <div id="container_serie" class="form-group col-11 hidden-ativo">
                     <x-adminlte-select name="serie" id="serie" label="Série:">
-                        <x-adminlte-options :options="['1 ANO FUNDAMENTAL' => '1 ANO FUNDAMENTAL', '2 ANO FUNDAMENTAL' =>'2 ANO FUNDAMENTAL', '3 ANO FUNDAMENTAL' => '3 ANO FUNDAMENTAL', '4 ANO FUNDAMENTAL' =>'4 ANO FUNDAMENTAL', '5 ANO FUNDAMENTAL' =>'5 ANO FUNDAMENTAL', '6 ANO FUNDAMENTAL' =>'6 ANO FUNDAMENTAL', '7 ANO FUNDAMENTAL' =>'7 ANO FUNDAMENTAL', '8 ANO FUNDAMENTAL' =>'8 ANO FUNDAMENTAL', '9 ANO FUNDAMENTAL' =>'9 ANO FUNDAMENTAL', '1 ANO ENSINO MEDIO' =>'1 ANO ENSINO MÉDIO', '2 ANO ENSINO MEDIO' =>'2 ANO ENSINO MÉDIO', '3 ANO MEDIO' =>'3 ANO ENSINO MÉDIO', '4 ANO ENSINO MÉDIO' =>'4 ANO ENSINO MÉDIO',]" disabled="0" empty-option="Selecione uma opção..." />
+                        <x-adminlte-options :options="['1' => '1 ANO FUNDAMENTAL', '2' =>'2 ANO FUNDAMENTAL', '3' => '3 ANO FUNDAMENTAL', '4' =>'4 ANO FUNDAMENTAL', '5' =>'5 ANO FUNDAMENTAL', '6' =>'6 ANO FUNDAMENTAL', '7' =>'7 ANO FUNDAMENTAL', '8' =>'8 ANO FUNDAMENTAL', '9' =>'9 ANO FUNDAMENTAL', '10' =>'1 ANO ENSINO MÉDIO', '11' =>'2 ANO ENSINO MÉDIO', '12' =>'3 ANO ENSINO MÉDIO','13' =>'4 ANO ENSINO MÉDIO']" disabled="0" empty-option="Selecione uma opção..." />
                     </x-adminlte-select>
                 </div>
 
@@ -538,28 +538,29 @@
 
         }).done((results) => {
             console.log(results);
+            aluno.endereco_id = results['id'];
 
-            // if (typeof(results["success"]) != undefined) {
+            if (typeof(results["success"]) != undefined) {
 
-            //     $.ajax({
+                $.ajax({
 
-            //         url: "{{ route('aluno.store') }}",
-            //         data: {
-            //             '_token': '{{ csrf_token() }}',
-            //             aluno,
+                    url: "{{ route('aluno.store') }}",
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        aluno,
 
-            //         },
-            //         type: "POST",
-            //         dataType: 'json'
+                    },
+                    type: "POST",
+                    dataType: 'json'
 
-            //     }).done((results) => {
-            //         console.log(results);
+                }).done((results) => {
+                    console.log(results);
 
-            //         if (typeof(results["success"]) != undefined) {
+                    if (typeof(results["success"]) != undefined) {
 
-            //         }
-            //     })
-            // }
+                    }
+                })
+            }
         })
     }
 </script>

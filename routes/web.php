@@ -35,8 +35,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/escola', EscolaController::class);
 
-Route::post('/escola/storeJson', [EscolaController::class, 'storeJsonData'])->name('escola.storeJsonData');
-
 Route::resource('/telefone', TelefoneController::class);
 
 Route::resource('/aluno', AlunoController::class);

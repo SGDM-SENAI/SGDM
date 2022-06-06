@@ -22,20 +22,10 @@ aluno = {
     'obs': null,
     'nome_social': null,
     'turno_escolar': null,
-    'endereço_id': null,
+    'endereco_id': null,
     'escola_id': null,
-    'escolaridade_id': null
 }
 
-escola = {
-    'nome_escola': null,
-    'rede': null
-}
-
-escolaridade = {
-    'nome_escolaridade': null,
-    'serie_escolar': null
-}
 
 alergia_aluno = {
     'alergia_id': null,
@@ -78,15 +68,21 @@ $(document).ready(() => {
         aluno.obs = $("#description-aluno").val();
         aluno.nome_social = $("#nome_social_aluno").val();
         aluno.turno_escolar = $("#turno_escolar").val();
-        escolaridade.nome_escolaridade = $("#escolaridade").val();
-        escolaridade.serie_escolar = $("#serie").val();
+        aluno.nivel_escolaridade = $("#escolaridade").val();
+        aluno.serie_escolar = $("#serie").val();
         replace("form-dados-gerais", "form-dados-saude");
 
     })
 
     $("#form-dados-saude").submit((e) => {
         e.preventDefault();
-        aluno.portador_pne = $("#pne").val();
+
+        if($("#pne").val() == 'SIM'){
+            aluno.portador_pne = 1;
+        }else{
+            aluno.portador_pne = 0;
+        }
+
         aluno.descricao_pne = $("#descricao_pne").val();
         aluno.medicacao_controlada = $("#nome_medicacao").val();
         aluno.tipo_sanguineo = $("#tipo_sanguineo").val();
