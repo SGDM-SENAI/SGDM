@@ -7,6 +7,7 @@ use App\Http\Requests\StoretelefoneRequest;
 use App\Http\Requests\UpdatetelefoneRequest;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class TelefoneController extends Controller
 {
@@ -40,13 +41,58 @@ class TelefoneController extends Controller
     public function store(StoretelefoneRequest $request)
     {
         //
-        
-        try{
+
+        try {
             $show = Telefone::create($request['telefone']);
-             return redirect('/telefone/create')->with('success', 'Escola adicionado com sucesso!');
+            return redirect('/telefone/create')->with('success', 'Escola adicionado com sucesso!');
         } catch (QueryException $e) {
             $msg = "Esta escola já está cadastrado. Por favor, informe uma escola ainda não cadastrado!";
             // return Redirect::back()->withErrors($msg);
+        }
+    }
+
+    public function storeJsonData(Request $request)
+    {
+        //
+
+        try {
+            $validatedData = $request->validate([
+                'telefone.numero' => 'required|max:20',
+                'telefone.aluno_id' => 'required|max:20'
+            ]);
+
+            $validatedData_extra = $request->validate([
+                'telefone_extra.numero' => 'max:20',
+                'telefone_extra.aluno_id' => 'max:20'
+            ]);
+
+            $show = Telefone::create($request['telefone']);
+            if($request['telefone_extra']['numero'] != null){
+                $show_extra = Telefone::create($request['telefone_extra']);
+            }
+
+            $validate = [
+
+                'success' => 1,
+                'message' => 'Telefone cadastrado com sucesso',
+                'id' => $request['telefone'],
+
+            ];
+
+            echo json_encode($validate);
+
+        } catch (QueryException $e) {
+
+            $validate = [
+
+                'success' => 0,
+                'message' => 'Não foi possível cadastrar esse telefone, por favor revise os dados inseridos e tente novamente',
+                'e' => $e,
+                'id' => $validatedData,
+
+            ];
+
+            echo json_encode($validate);
         }
     }
 

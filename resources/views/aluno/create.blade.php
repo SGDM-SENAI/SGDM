@@ -295,10 +295,10 @@
                     <x-adminlte-input type="number" name="numero_bolsa_familia" id="numero_bolsa_familia" label="Número do bolsa família:" placeholder="Informe o número do bolsa família." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone" name="telefone" label="*Telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
+                    <x-adminlte-input type="number" name="telefone" id="telefone" label="*Telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
                 </div>
                 <div class="form-group col-11">
-                    <x-adminlte-input type="number" name="telefone2" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
+                    <x-adminlte-input type="number" name="telefone_extra" id="telefone_extra" label="Outro telefone para contato:" placeholder="Informe o telefone do responsável ou do aluno." enable-feedback />
                 </div>
 
             </div>
@@ -536,11 +536,12 @@
             type: "POST",
             dataType: 'json'
 
-        }).done((results) => {
-            console.log(results);
-            aluno.endereco_id = results['id'];
+        }).done((results_endereco) => {
+            console.log(results_endereco);
 
-            if (typeof(results["success"]) != undefined) {
+            if (results_endereco["success"] == 1) {
+
+                aluno.endereco_id = results_endereco['id'];
 
                 $.ajax({
 
@@ -553,11 +554,34 @@
                     type: "POST",
                     dataType: 'json'
 
-                }).done((results) => {
-                    console.log(results);
+                }).done((results_aluno) => {
+                    console.log(results_aluno);
 
-                    if (typeof(results["success"]) != undefined) {
+                    if (results_aluno["success"] == 1) {
 
+                        telefone.aluno_id = results_aluno['id'];
+                        telefone_extra.aluno_id = results_aluno['id'];
+                        
+
+                        $.ajax({
+
+                            url: "{{ route('telefone.storeJsonData') }}",
+                            data: {
+                                '_token': '{{ csrf_token() }}',
+                                telefone,
+                                telefone_extra
+
+                            },
+                            type: "POST",
+                            dataType: 'json'
+
+                        }).done((results) => {
+                            console.log(results);
+
+                            if (results["success"] == 1) {
+
+                            }
+                        })
                     }
                 })
             }

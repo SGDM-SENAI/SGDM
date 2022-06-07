@@ -38,7 +38,13 @@ alergia = {
 }
 
 telefone = {
-    'numero': null
+    'numero': null,
+    'aluno_id' : null
+}
+
+telefone_extra = {
+    'numero': null,
+    'aluno_id' : null
 }
 
 endereco = {
@@ -98,6 +104,8 @@ $(document).ready(() => {
         aluno.renda_familiar = $("#renda_familiar").val();
         aluno.numero_cnis = $("#numero_cnis").val();
         aluno.numero_bolsa_familia = $("#numero_bolsa_familia").val();
+        telefone.numero = $("#telefone").val();
+        telefone_extra.numero = $("#telefone_extra").val();
         replace("form-dados-responsaveis", "form-dados-endereco");
     })
 

@@ -82,7 +82,7 @@ class AlunoController extends Controller
             $validate = [
                 'success' => 1,
                 'message' => 'aluno cadastrado com sucesso',
-                // 'id' => $show['id'],
+                'id' => $show['id'],
 
             ];
 

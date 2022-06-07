@@ -37,6 +37,8 @@ Route::resource('/escola', EscolaController::class);
 
 Route::resource('/telefone', TelefoneController::class);
 
+Route::post('/telefone/storeJson', [TelefoneController::class, 'storeJsonData'])->name('telefone.storeJsonData');
+
 Route::resource('/aluno', AlunoController::class);
 
 Route::resource('/alergia', AlergiaController::class);
