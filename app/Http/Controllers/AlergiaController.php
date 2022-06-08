@@ -65,6 +65,7 @@ class AlergiaController extends Controller
             return Redirect::back()->withErrors($msg);
         }
     }
+    
 
     /**
      * Display the specified resource.

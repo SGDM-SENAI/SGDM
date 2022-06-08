@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Resource;
 use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\TelefoneController;
 use App\Http\Controllers\AlergiaController;
+use App\Http\Controllers\AlergiaAlunoController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioController;
@@ -42,6 +43,8 @@ Route::post('/telefone/storeJson', [TelefoneController::class, 'storeJsonData'])
 Route::resource('/aluno', AlunoController::class);
 
 Route::resource('/alergia', AlergiaController::class);
+
+Route::resource('/alergia_aluno', AlergiaAlunoController::class);
 
 Route::resource('/professor', ProfessorController::class);
 

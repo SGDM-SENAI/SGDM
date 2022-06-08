@@ -561,7 +561,7 @@
 
                         telefone.aluno_id = results_aluno['id'];
                         telefone_extra.aluno_id = results_aluno['id'];
-                        
+
 
                         $.ajax({
 
@@ -575,10 +575,31 @@
                             type: "POST",
                             dataType: 'json'
 
-                        }).done((results) => {
-                            console.log(results);
+                        }).done((results_telefone) => {
+                            console.log(results_telefone);
 
-                            if (results["success"] == 1) {
+                            if (results_telefone["success"] == 1) {
+
+                                $.ajax({
+
+                                    url: "{{ route('alergia_aluno.store') }}",
+                                    data: {
+
+                                        '_token': '{{ csrf_token() }}',
+                                        alergias,
+                                        'aluno_id' : results_aluno['id']
+
+                                    },
+                                    type: "POST",
+                                    dataType: 'json'
+
+                                }).done((results_alergia) => {
+                                    console.log(results_alergia);
+
+                                    if (results_alergia["success"] == 1) {
+
+                                    }
+                                })
 
                             }
                         })
