@@ -53,7 +53,7 @@ const replaceElementOptionsEscolaridade = (ids, sender, novalue) => {
 }
 
 const selectEscola = (id, name) => {
-    
+
     if (aluno.escola_id == null) {
         aluno.escola_id = id;
         createItemList('container-select-escola', `escola-${id}`, name, `javascript:dropEscola(\'${id}\')`)
@@ -118,6 +118,21 @@ const deleteElement = (id) => {
     document.getElementById(id).remove()
 }
 
+const createItemDataTable = (rawContainer, content) => {
+
+    var container = document.getElementById(rawContainer);
+
+    content.forEach(column => {
+
+        item = document.createElement('td');
+        text = document.createTextNode(column);
+        item.appendChild(text);
+        container.appendChild(item);
+
+    });
+
+
+}
 
 const replaceAlergia = () => {
     replace("container-data-table", "alergia-manage")
@@ -140,13 +155,13 @@ async function viacepComplete() {
         var cep = parseInt(document.getElementById("cep").value);
         const url = `https://viacep.com.br/ws/${cep}/json/`;
         const dados = await fetch(url);
-        
+
         const endereco = await dados.json();
         if (typeof endereco.erro == "undefined") {
             document.getElementById("bairro").value = endereco.bairro;
             document.getElementById("logradouro").value = endereco.logradouro;
         }
-        
+
     } catch (error) {
         alert(1);
         console.log(error);

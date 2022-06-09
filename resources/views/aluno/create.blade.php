@@ -537,18 +537,18 @@
             e.preventDefault();
 
             escola = {
-                'nome_escola' : $("#nome_escola").val(),
-                'rede' : $("#rede_escola").val(),
+                'nome_escola': $("#nome_escola").val(),
+                'rede': $("#rede_escola").val(),
             }
 
             $.ajax({
 
                 url: "{{ route('escola.storeJsonData') }}",
                 data: {
-                '_token': '{{ csrf_token() }}',
-                escola
+                    '_token': '{{ csrf_token() }}',
+                    escola
 
-            },
+                },
                 type: "POST",
                 dataType: 'json'
 
@@ -556,7 +556,8 @@
                 console.log(results_escola);
 
                 if (results_escola["success"] == 1) {
-                    replace('form-escola','container-data-table-escola'),activate('option-add-widjet-escola')
+                    createItemDataTableEscola([results_escola['data']["nome_escola"],results_escola['data']["rede"]],results_escola['data']["id"],results_escola['data']["nome_escola"])
+                    replace('form-escola', 'container-data-table-escola'), activate('option-add-widjet-escola')
                 }
             })
         })
@@ -646,6 +647,33 @@
                 })
             }
         })
+    }
+
+    const createItemDataTableEscola = (content,id,name) => {
+
+        createItemDataTable('tbody-escola', content);
+
+        var container = document.getElementById('tbody-escola');
+
+        column = document.createElement('td');
+        element = document.createElement('button');
+        element.setAttribute('type', 'button');
+        element.setAttribute('id', 'button-escola');
+        element.setAttribute('onclick', `selectEscola(${id},'${name}'),inactivate('option-add-widjet-escola')`);
+        element.setAttribute('class', 'btn btn-manage backgroud-primary');
+        text = document.createTextNode('Selecionar');
+        element.appendChild(text);
+
+        column.appendChild(element);
+        container.appendChild(column);
+
+        // <
+        // td > < button type = "button"
+        // id = "button-escola"
+        // onclick = "selectEscola(<?php echo $escola['id'] . ',' . '\'' . $escola['nome_escola'] . '\'' ?>),inactivate('option-add-widjet-escola')"
+        // class = "btn btn-manage backgroud-primary" > @lang('Selecionar') < /button></td >
+
+
     }
 </script>
 
