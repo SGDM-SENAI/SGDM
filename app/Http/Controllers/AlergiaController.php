@@ -65,6 +65,42 @@ class AlergiaController extends Controller
             return Redirect::back()->withErrors($msg);
         }
     }
+
+    public function storeJsonData(Request $request)
+    {
+
+        try {
+            $validatedData = $request->validate([
+                'alergia.nome_alergia' => 'required|max:128',
+                'alergia.tipo_alergia' => 'required|max:64'
+            ]);
+
+
+            $show = Alergia::create($validatedData);
+
+            $validate = [
+                'success' => 1,
+                'message' => 'alergia cadastrada com sucesso',
+                'data' => [
+                    'id' => $show['id'],
+                    'nome_alergia' => $request['alergia']['nome_alergia'],
+                    'tipo_alergia' => $request['alergia']['tipo_alergia'],
+                ],
+            ];
+
+            echo json_encode($validate);
+            
+        } catch (\Exception $e) {
+
+            $validate = [
+                'success' => 0,
+                'message' => "Não foi possível cadastrar essa alergia, por favor revise os dados inseridos e tente novamente",
+                'error' => $e
+            ];
+
+            echo json_encode($validate);
+        }
+    }
     
 
     /**

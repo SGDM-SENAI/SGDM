@@ -36,6 +36,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/escola', EscolaController::class);
 
+Route::post('/escola/storeJson', [EscolaController::class, 'storeJsonData'])->name('escola.storeJsonData');
+
 Route::resource('/telefone', TelefoneController::class);
 
 Route::post('/telefone/storeJson', [TelefoneController::class, 'storeJsonData'])->name('telefone.storeJsonData');
@@ -43,6 +45,8 @@ Route::post('/telefone/storeJson', [TelefoneController::class, 'storeJsonData'])
 Route::resource('/aluno', AlunoController::class);
 
 Route::resource('/alergia', AlergiaController::class);
+
+Route::post('/alergia/storeJson', [AlergiaController::class, 'storeJsonData'])->name('alergia.storeJsonData');
 
 Route::resource('/alergia_aluno', AlergiaAlunoController::class);
 

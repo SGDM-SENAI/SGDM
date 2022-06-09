@@ -193,3 +193,13 @@
         height: 100vh;
         position: fixed !important;;
     }
+
+    div#escolas_filter, div#alergias_filter{
+        padding: 0 0 0 6.5vw;
+    }
+
+    #alergias_paginate , #escolas_paginate{
+        padding: 0 0 0 9vw;
+    }
+
+    

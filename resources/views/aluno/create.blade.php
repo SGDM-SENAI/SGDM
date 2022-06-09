@@ -32,27 +32,6 @@
                 </a>
             </div>
         </div>
-        <!-- <div class="row">
-            <p></p>
-        </div>
-        @if (session('success'))
-        <x-adminlte-alert class="bg-teal text-uppercase" icon="fa fa-lg fa-thumbs-up" title="Feito!" dismissable>
-            {{ session('success') }}
-        </x-adminlte-alert>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>@lang('Whoops!') </strong>@lang('Houve alguns problemas com sua entrada.') <br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-
-            </ul>
-        </div>
-        @endif -->
-        <!-- /.card-header -->
-
 
         <div class="card-body">
 
@@ -136,9 +115,7 @@
         <div class="container-button-admin">
             <button type="button" disabled class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
         </div>
-        <!-- <div class="container-etapa">
-            <span>Etapa <div id="num-etapa">1</div>/5</span>
-        </div> -->
+
         <div class="figure-etapa">
             <div class="figure-circle circle-ativo"></div>
             <div class="figure-circle circle-inativo"></div>
@@ -314,10 +291,6 @@
 
         </div>
 
-
-        <!-- <div class="container-etapa">
-            <span>Etapa <div id="num-etapa">1</div>/5</span>
-        </div> -->
         <div class="figure-etapa">
             <div class="figure-circle circle-inativo"></div>
             <div class="figure-circle circle-inativo"></div>
@@ -419,8 +392,8 @@
         <table id="alergias" class="datatable table table-striped">
             <thead>
                 <tr>
-                    <th style="width : 200px; ">Nome da alergia</th>
-                    <th>Tipo de alergia</th>
+                    <th style="width : 150px; ">Nome da alergia</th>
+                    <th style="width : 150px; ">Tipo de alergia</th>
                     <th>Ações</th>
                 </tr>
             </thead>

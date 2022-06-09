@@ -61,6 +61,42 @@ class EscolaController extends Controller
         }
     }
 
+    public function storeJsonData(Request $request)
+    {
+
+        try {
+            $validatedData = $request->validate([
+                'escola.nome_escola' => 'required|max:50',
+                'escola.rede' => 'required|max:10'
+            ]);
+
+
+            $show = Escola::create($validatedData);
+
+            $validate = [
+                'success' => 1,
+                'message' => 'Escola cadastrada com sucesso',
+                'data' => [
+                    'id' => $show['id'],
+                    'nome_escola' => $request['escola']['nome_escola'],
+                    'rede' => $request['escola']['rede'],
+                ],
+            ];
+
+            echo json_encode($validate);
+            
+        } catch (\Exception $e) {
+
+            $validate = [
+                'success' => 0,
+                'message' => "Não foi possível cadastrar essa escola, por favor revise os dados inseridos e tente novamente",
+                'error' => $e
+            ];
+
+            echo json_encode($validate);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -70,7 +106,7 @@ class EscolaController extends Controller
     public function show($id)
     {
         $escolacases = Escola::all();
-        return(compact('escolacases'));
+        return (compact('escolacases'));
     }
 
     /**
