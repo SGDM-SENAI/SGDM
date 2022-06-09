@@ -118,6 +118,7 @@ const deleteElement = (id) => {
     document.getElementById(id).remove()
 }
 
+
 const replaceAlergia = () => {
     replace("container-data-table", "alergia-manage")
 }

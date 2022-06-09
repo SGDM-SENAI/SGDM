@@ -54,7 +54,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">@lang('Adicionar')</button>
+            <button type="submit" class="btn btn-primary">  @lang('Adicionar')</button>
         </div>
         
     </form>

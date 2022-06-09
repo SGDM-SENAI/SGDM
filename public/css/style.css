@@ -202,4 +202,33 @@
         padding: 0 0 0 9vw;
     }
 
+    .container-options-widjet a{
+        color: rgb(255, 255, 255)
+    }
+
+    .container-options-widjet{
+        display: flex;
+        width: 15vw;
+        justify-content: space-between
+    }
     
+    #form-escola{
+        color: rgb(0,0,0)
+    }
+
+    .container-inputs-widget{
+        margin-top: 7vh;
+    }
+
+    .container-options-widget-form{
+        width: 95%;
+        margin : 7vh 0 0 2.4%;
+    }
+
+    .container-button-admin-form-widget-submit{
+        width:65%
+    }
+
+    .btn-submit-widget{
+        width: 15vw;
+    }

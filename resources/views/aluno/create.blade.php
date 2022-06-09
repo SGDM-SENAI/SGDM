@@ -15,7 +15,7 @@
 
 <!-- form-dados-gerais  -->
 
-<form action="#" class="hidden-inativo" id="form-dados-gerais">
+<form class="hidden-inativo" id="form-dados-gerais">
 
     <!-- Os formulários não possuem method, pois são tratados via ajax -->
 
@@ -134,7 +134,7 @@
 
 <!--  form-dados-saude -->
 
-<form class="hidden-ativo" action="#" id="form-dados-saude">
+<form class="hidden-ativo" id="form-dados-saude">
     @csrf
     <div class="card card-admin card-outline direct-chat direct-chat-primary shadow-none">
         <div class="card-header backgroud-primary">
@@ -224,7 +224,7 @@
 
 <!--  form-dados-responsaveis -->
 
-<form class="hidden-ativo" action="#" id="form-dados-responsaveis">
+<form class="hidden-ativo" id="form-dados-responsaveis">
     @csrf
     <div class=" card card-admin card-outline direct-chat direct-chat-primary shadow-none">
 
@@ -308,7 +308,7 @@
 
 <!-- form-dados-endereco  -->
 
-<form action="#" class="hidden-ativo" id="form-dados-endereco">
+<form class="hidden-ativo" id="form-dados-endereco">
 
     <!-- Os formulários não possuem method, pois são tratados via ajax -->
 
@@ -429,38 +429,21 @@
 <section id="container-escola" class="widget hidden-ativo">
     <div class="header">
         <div>
-            <h1>escolas</h1>
+            <h1>Escolas</h1>
         </div>
 
-        <div>
-            <a href="javascript:close('container-escola')">
-                <img src="{{ url('img/close.png') }}" alt="Sair">
+        <div class="container-options-widjet" ">
+            <div>
+            <a id="option-add-widjet-escola" class="hidden-ativo" href="javascript:replace('container-data-table-escola','form-escola'),inactivate('option-add-widjet-escola')">
+            Adicionar escola
             </a>
         </div>
+        <a href="javascript:close('container-escola')">
+            <img src="{{ url('img/close.png') }}" alt="Sair">
+        </a>
     </div>
-    <div id="container-data-table-escola" class="container-data-table-widget hidden-ativo">
-        <table id="escolas" class="datatable table table-striped">
-            <thead>
-                <tr>
-                    <th style="width : 200px; ">Nome da escola</th>
-                    <th>Rede</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($escolaCases as $escola)
-                <tr>
-                    <td>{{$escola["nome_escola"]}}</td>
-                    <td>{{$escola["rede"]}}</td>
-                    <td><button type="button" id="button-escola" onclick="selectEscola(<?php echo $escola['id'] . ',' . '\'' . $escola['nome_escola'] . '\'' ?>)" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
-
-                </tr>
-                @endforeach
-
-            </tbody>
-
-        </table>
     </div>
+
     <div id="escola-manage" class="hidden-inativo">
         <div class="container-manage">
             <div class="column">
@@ -472,11 +455,64 @@
 
             </div>
             <div id="container-replace-escola" class="column">
-                <button type="button" id="button-escola" onclick="replace('escola-manage','container-data-table-escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
+                <button type="button" id="button-escola" onclick="replace('escola-manage','container-data-table-escola'),activate('option-add-widjet-escola')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
             </div>
         </div>
         <div id="container-select-escola"></div>
     </div>
+
+    <div id="container-data-table-escola" class="container-data-table-widget hidden-ativo">
+        <table id="escolas" class="datatable table table-striped">
+            <thead>
+                <tr>
+                    <th style="width : 200px; ">Nome da escola</th>
+                    <th>Rede</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-escola">
+                @foreach($escolaCases as $escola)
+                <tr>
+                    <td>{{$escola["nome_escola"]}}</td>
+                    <td>{{$escola["rede"]}}</td>
+                    <td><button type="button" id="button-escola" onclick="selectEscola(<?php echo $escola['id'] . ',' . '\'' . $escola['nome_escola'] . '\'' ?>),inactivate('option-add-widjet-escola')" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
+
+                </tr>
+                @endforeach
+
+            </tbody>
+
+        </table>
+    </div>
+
+    <form id="form-escola" class="hidden-ativo">
+
+        <div class="container-inputs-widget card-column col-12">
+
+            <div class="form-group col-12">
+                <x-adminlte-input type="text" name="nome_escola" id="nome_escola" label="Nome da escola:" placeholder="Informe o nome da escola." enable-feedback />
+            </div>
+
+            <div class="form-group col-12">
+                <x-adminlte-select name="rede_escola" id="rede_escola" label="Rede de ensino" placeholder="Informe a rede de ensino da escola.">
+                    <x-adminlte-options :options="['MUNICIPAL' => 'MUNICIPAL', 'ESTADUAL' =>'ESTADUAL', 'FEDERAL' => 'FEDERAL', 'PRIVADA' => 'PRIVADA']" disabled="0" empty-option="Selecione uma opção..." />
+                </x-adminlte-select>
+            </div>
+        </div>
+
+        <div class="container-options container-options-widget-form">
+
+            <div class="container-button-admin">
+                <button type="button" onclick="replace('form-escola','container-data-table-escola'),activate('option-add-widjet-escola')" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+            </div>
+
+            <div class="container-button-admin container-button-admin-form-widget-submit">
+                <button type="submit" class="btn backgroud-primary btn-submit-widget">@lang('Cadastrar')</button>
+            </div>
+
+        </div>
+
+    </form>
 </section>
 
 
@@ -496,6 +532,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 
 <script>
+    $(document).ready(() => {
+        $("#form-escola").submit((e) => {
+            e.preventDefault();
+
+            escola = {
+                'nome_escola' : $("#nome_escola").val(),
+                'rede' : $("#rede_escola").val(),
+            }
+
+            $.ajax({
+
+                url: "{{ route('escola.storeJsonData') }}",
+                data: {
+                '_token': '{{ csrf_token() }}',
+                escola
+
+            },
+                type: "POST",
+                dataType: 'json'
+
+            }).done((results_escola) => {
+                console.log(results_escola);
+
+                if (results_escola["success"] == 1) {
+                    replace('form-escola','container-data-table-escola'),activate('option-add-widjet-escola')
+                }
+            })
+        })
+    })
+
     const submitForm = () => {
 
         $.ajax({
@@ -560,7 +626,7 @@
 
                                         '_token': '{{ csrf_token() }}',
                                         alergias,
-                                        'aluno_id' : results_aluno['id']
+                                        'aluno_id': results_aluno['id']
 
                                     },
                                     type: "POST",

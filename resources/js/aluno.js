@@ -32,11 +32,6 @@ alergia_aluno = {
     'aluno_id': null
 }
 
-alergia = {
-    'tipo_alergia': null,
-    'nome_alergia': null
-}
-
 telefone = {
     'numero': null,
     'aluno_id' : null
@@ -123,6 +118,7 @@ $(document).ready(() => {
             replace("form-dados-endereco", "form-dados-gerais");
         }
     })
+
 
     $('#alergias').DataTable({
         "bProcessing": true,

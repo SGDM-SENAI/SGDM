@@ -71,7 +71,7 @@ class EscolaController extends Controller
             ]);
 
 
-            $show = Escola::create($validatedData);
+            $show = Escola::create($validatedData['escola']);
 
             $validate = [
                 'success' => 1,
