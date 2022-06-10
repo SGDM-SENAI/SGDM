@@ -135,11 +135,13 @@ const createItemDataTable = (rawContainer, content) => {
 }
 
 const replaceAlergia = () => {
-    replace("container-data-table", "alergia-manage")
+    replace("container-data-table", "alergia-manage");
+    
 }
 
 const replaceEscola = () => {
     replace("container-data-table-escola", "escola-manage")
+    inactivate('option-add-widjet-escola');
 }
 
 const close = (id) => {
