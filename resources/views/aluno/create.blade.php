@@ -382,12 +382,31 @@
         <div>
             <h1>Alergias</h1>
         </div>
-        <div>
-            <a href="javascript:close('container-alergia')">
-                <img src="{{ url('img/close.png') }}" alt="Sair">
+        <div class="container-options-widjet">
+            <div>
+                <a id="option-add-widjet-alergia" class="hidden-ativo" href="javascript:replace('container-data-table','form-alergia'),inactivate('option-add-widjet-alergia')">
+            Adicionar alergia
             </a>
         </div>
+        <a href="javascript:close('container-alergia')">
+            <img src="{{ url('img/close.png') }}" alt="Sair">
+        </a>
     </div>
+    </div>
+
+    <div id="alergia-manage" class="hidden-inativo">
+        <div class="container-manage">
+            <div class="column">
+                <span id="message-null-alergia">Nenhuma alergia selecionada até o momento</span>
+            </div>
+            <div class="column">
+                <button type="button" id="button-alergia" onclick="replace('alergia-manage','container-data-table'),activate('option-add-widjet-alergia')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
+            </div>
+
+        </div>
+        <div id="container-select-alergia"></div>
+    </div>
+
     <div id="container-data-table" class="container-data-table-widget hidden-ativo">
         <table id="alergias" class="datatable table table-striped">
             <thead>
@@ -397,13 +416,13 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody-alergia">
 
                 @foreach($alergiaCases as $alergia)
                 <tr>
                     <td>{{$alergia["nome_alergia"]}}</td>
                     <td>{{$alergia["tipo_alergia"]}}</td>
-                    <td><button type="button" id="button-escola" onclick="selectAlergia(<?php echo $alergia['id'] . ',' . '\'' . $alergia['nome_alergia'] . '\'' ?>)" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
+                    <td><button type="button" id="button-alergia" onclick="selectAlergia(<?php echo $alergia['id'] . ',' . '\'' . $alergia['nome_alergia'] . '\'' ?>),inactivate('option-add-widjet-alergia')" class="btn btn-manage backgroud-primary">@lang('Selecionar')</button></td>
 
                 </tr>
                 @endforeach
@@ -412,18 +431,35 @@
 
         </table>
     </div>
-    <div id="alergia-manage" class="hidden-inativo">
-        <div class="container-manage">
-            <div class="column">
-                <span id="message-null-alergia">Nenhuma alergia selecionada até o momento</span>
+
+    <form id="form-alergia" class="hidden-ativo">
+
+        <div class="container-inputs-widget card-column col-12">
+
+            <div class="form-group col-12">
+                <x-adminlte-input type="text" name="nome_alergia" id="nome_alergia" label="Nome da alergia:" placeholder="Informe o nome da alergia." enable-feedback />
             </div>
-            <div class="column">
-                <button type="button" id="button-alergia" onclick="replace('alergia-manage','container-data-table')" class="btn btn-manage backgroud-primary">@lang('Adicionar')</button>
+
+            <div class="form-group col-12">
+                <x-adminlte-select name="tipo_alergia" id="tipo_alergia" label="Informe o tipo da alergia." placeholder="Informe o tipo da alergia.">
+                    <x-adminlte-options :options="['Alergia respiratoria' => 'Alergia respiratória', 'Alergia alimentar' =>'Alergia alimentar', 'Alergia cutanea' => 'Alergia cutânea (da pele)', 'Alergia a inseto' => 'Alergia a inseto', 'Alergia a pelo de animais' => 'Alergia a pelo de animais', 'Alergia a medicamentos' => 'Alergia a medicamentos', 'Outra alergia' => 'Outra alergia']" disabled="0" empty-option="Selecione uma opção..." />
+                </x-adminlte-select>
+            </div>
+        </div>
+
+        <div class="container-options container-options-widget-form">
+
+            <div class="container-button-admin">
+                <button type="button" onclick="replace('form-alergia','container-data-table'),activate('option-add-widjet-alergia')" class="btn btn-back backgroud-empty">@lang('< Voltar')</button>
+            </div>
+
+            <div class="container-button-admin container-button-admin-form-widget-submit">
+                <button type="submit" class="btn backgroud-primary btn-submit-widget">@lang('Cadastrar')</button>
             </div>
 
         </div>
-        <div id="container-select-alergia"></div>
-    </div>
+
+    </form>
 </section>
 
 <section id="container-escola" class="widget hidden-ativo">
@@ -432,9 +468,9 @@
             <h1>Escolas</h1>
         </div>
 
-        <div class="container-options-widjet" ">
+        <div class="container-options-widjet">
             <div>
-            <a id="option-add-widjet-escola" class="hidden-ativo" href="javascript:replace('container-data-table-escola','form-escola'),inactivate('option-add-widjet-escola')">
+                <a id="option-add-widjet-escola" class="hidden-ativo" href="javascript:replace('container-data-table-escola','form-escola'),inactivate('option-add-widjet-escola')">
             Adicionar escola
             </a>
         </div>
@@ -556,8 +592,37 @@
                 console.log(results_escola);
 
                 if (results_escola["success"] == 1) {
-                    createItemDataTableEscola([results_escola['data']["nome_escola"],results_escola['data']["rede"]],results_escola['data']["id"],results_escola['data']["nome_escola"])
+                    createItemDataTableEscola([results_escola['data']["nome_escola"], results_escola['data']["rede"]], results_escola['data']["id"], results_escola['data']["nome_escola"])
                     replace('form-escola', 'container-data-table-escola'), activate('option-add-widjet-escola')
+                }
+            })
+        })
+
+        $("#form-alergia").submit((e) => {
+            e.preventDefault();
+
+            alergia = {
+                'nome_alergia': $("#nome_alergia").val(),
+                'tipo_alergia': $("#tipo_alergia").val(),
+            }
+
+            $.ajax({
+
+                url: "{{ route('alergia.storeJsonData') }}",
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    alergia
+
+                },
+                type: "POST",
+                dataType: 'json'
+
+            }).done((results_alergia) => {
+                console.log(results_alergia);
+
+                if (results_alergia["success"] == 1) {
+                    createItemDataTableAlergia([results_alergia['data']["nome_alergia"], results_alergia['data']["tipo_alergia"]], results_alergia['data']["id"], results_alergia['data']["nome_alergia"])
+                    replace('form-alergia', 'container-data-table'), activate('option-add-widjet-alergia')
                 }
             })
         })
@@ -649,7 +714,7 @@
         })
     }
 
-    const createItemDataTableEscola = (content,id,name) => {
+    const createItemDataTableEscola = (content, id, name) => {
 
         createItemDataTable('tbody-escola', content);
 
@@ -667,11 +732,28 @@
         column.appendChild(element);
         container.appendChild(column);
 
-        // <
-        // td > < button type = "button"
-        // id = "button-escola"
-        // onclick = "selectEscola(<?php echo $escola['id'] . ',' . '\'' . $escola['nome_escola'] . '\'' ?>),inactivate('option-add-widjet-escola')"
-        // class = "btn btn-manage backgroud-primary" > @lang('Selecionar') < /button></td >
+
+    }
+
+    const createItemDataTableAlergia = (content, id, name) => {
+
+        createItemDataTable('tbody-alergia', content);
+
+        var container = document.getElementById('tbody-alergia');
+
+        column = document.createElement('td');
+        element = document.createElement('button');
+        element.setAttribute('type', 'button');
+        element.setAttribute('id', 'button-alergia');
+        element.setAttribute('onclick', `selectAlergia(${id},'${name}'),inactivate('option-add-widjet-alergia')`);
+        element.setAttribute('class', 'btn btn-manage backgroud-primary');
+        text = document.createTextNode('Selecionar');
+        element.appendChild(text);
+
+        column.appendChild(element);
+        container.appendChild(column);
+
+        
 
 
     }

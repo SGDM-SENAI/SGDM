@@ -76,7 +76,7 @@ class AlergiaController extends Controller
             ]);
 
 
-            $show = Alergia::create($validatedData);
+            $show = Alergia::create($validatedData['alergia']);
 
             $validate = [
                 'success' => 1,

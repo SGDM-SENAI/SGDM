@@ -136,6 +136,7 @@ const createItemDataTable = (rawContainer, content) => {
 
 const replaceAlergia = () => {
     replace("container-data-table", "alergia-manage");
+    inactivate('option-add-widjet-alergia');
     
 }
 
